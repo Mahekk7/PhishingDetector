@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>QR Scanner | PhishingDetector</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: auto;
+        }
+
+        body {
+            margin: 0;
+
+            font-family:
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
+            line-height: 1.6;
+
+            background:
+                radial-gradient(
+                    circle at top left,
+                    rgba(255, 157, 204, 0.30),
+                    transparent 34%
+                ),
+                radial-gradient(
+                    circle at bottom right,
+                    rgba(246, 107, 171, 0.18),
+                    transparent 36%
+                ),
+                #fff6fa;
+
+            color: #54283f;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff9dcc,
+                    #f66bab,
+                    #df4289
+                );
+
+            border-bottom:
+                1px solid rgba(194, 45, 114, 0.18);
+
+            padding: 20px 0;
+
+            box-shadow:
+                0 8px 30px rgba(210, 56, 121, 0.20);
+        }
+
+
+        .wrap {
+
+            width: min(1100px, 92%);
+
+            margin: auto;
+        }
+
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        .nav {
+
+            display: flex;
+
+            gap: 15px;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            flex-wrap: wrap;
+        }
+
+
+        .brand {
+
+            font-size: 19px;
+
+            font-weight: 800;
+
+            color: white;
+
+            text-decoration: none;
+
+            letter-spacing: 0.2px;
+
+            text-shadow:
+                0 2px 8px rgba(120, 20, 70, 0.20);
+        }
+
+
+        .links {
+
+            display: flex;
+
+            gap: 8px;
+
+            flex-wrap: wrap;
+
+            justify-content: center;
+        }
+
+
+        .links a {
+
+            color: white;
+
+            text-decoration: none;
+
+            border:
+                1px solid rgba(255, 255, 255, 0.38);
+
+            border-radius: 10px;
+
+            padding: 8px 12px;
+
+            background:
+                rgba(255, 255, 255, 0.15);
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            transition: 0.25s;
+        }
+
+
+        .links a:hover {
+
+            background:
+                rgba(255, 255, 255, 0.30);
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 6px 18px rgba(150, 35, 90, 0.18);
+        }
+
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        main {
+
+            padding:
+                48px 0 70px;
+        }
+
+
+        .eyebrow {
+
+            color: #d23879;
+
+            font-size: 0.85rem;
+
+            font-weight: 800;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 8px;
+        }
+
+
+        h1 {
+
+            font-size:
+                clamp(2rem, 4vw, 3.2rem);
+
+            line-height: 1.15;
+
+            margin: 5px 0 12px;
+
+            color: #6f2349;
+        }
+
+
+        main > .wrap > p {
+
+            color: #80566c;
+
+            font-size: 16px;
+
+            max-width: 800px;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* =========================
+           CARD
+        ========================= */
+
+        .card {
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #ffffff,
+                    #fff8fc
+                );
+
+            border:
+                1px solid #efc5d9;
+
+            border-radius: 20px;
+
+            padding: 30px;
+
+            margin-top: 25px;
+
+            box-shadow:
+                0 14px 40px rgba(185, 61, 117, 0.12);
+        }
+
+
+        .card h2 {
+
+            color: #c42d72;
+
+            margin-top: 0;
+
+            margin-bottom: 20px;
+
+            font-size: 25px;
+        }
+
+
+        /* =========================
+           FORM
+        ========================= */
+
+        label {
+
+            display: block;
+
+            margin:
+                10px 0 8px;
+
+            color: #6f304e;
+
+            font-weight: 700;
+        }
+
+
+        .field {
+
+            display: block;
+
+            width: 100%;
+
+            margin-top: 7px;
+
+            background: #fffafd;
+
+            color: #4e263b;
+
+            border:
+                1px solid #efbfd5;
+
+            border-radius: 12px;
+
+            padding: 14px;
+
+            font: inherit;
+
+            outline: none;
+
+            transition: 0.25s;
+        }
+
+
+        .field:focus {
+
+            border-color: #ed5797;
+
+            box-shadow:
+                0 0 0 4px rgba(237, 87, 151, 0.12),
+                0 0 20px rgba(237, 87, 151, 0.10);
+        }
+
+
+        /* =========================
+           FILE INPUT
+        ========================= */
+
+        .field::file-selector-button {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f45a9e,
+                    #d23879
+                );
+
+            color: white;
+
+            border: none;
+
+            border-radius: 8px;
+
+            padding: 9px 14px;
+
+            margin-right: 12px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.25s;
+        }
+
+
+        .field::file-selector-button:hover {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f76eaa,
+                    #df4289
+                );
+        }
+
+
+        /* =========================
+           PRIMARY BUTTON
+        ========================= */
+
+        .primary {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f45a9e,
+                    #d23879
+                );
+
+            color: white;
+
+            border: none;
+
+            border-radius: 11px;
+
+            padding: 14px 22px;
+
+            font-weight: 800;
+
+            font-size: 16px;
+
+            margin-top: 18px;
+
+            cursor: pointer;
+
+            transition: 0.25s;
+
+            box-shadow:
+                0 8px 22px rgba(210, 56, 121, 0.25);
+        }
+
+
+        .primary:hover {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f76eaa,
+                    #df4289
+                );
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 11px 28px rgba(210, 56, 121, 0.32);
+        }
+
+
+        /* =========================
+           ALERTS
+        ========================= */
+
+        .alert,
+        .result {
+
+            padding: 20px;
+
+            border-radius: 14px;
+
+            margin-top: 22px;
+
+            overflow-wrap: anywhere;
+
+            background:
+                #fff8fc;
+
+            border:
+                1px solid #efc5d9;
+
+            box-shadow:
+                0 6px 20px rgba(185, 61, 117, 0.08);
+        }
+
+
+        .error {
+
+            border-left:
+                5px solid #e94f72;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #fff1f4,
+                    #ffe9ef
+                );
+
+            color: #8d3048;
+        }
+
+
+        .success {
+
+            border-left:
+                5px solid #35b879;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #effcf5,
+                    #e5f9ee
+                );
+
+            color: #28734f;
+        }
+
+
+        /* =========================
+           RESULT
+        ========================= */
+
+        .result {
+
+            border-left:
+                5px solid #e04b91;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #fffaff,
+                    #fff5fa
+                );
+        }
+
+
+        .result h2 {
+
+            color: #c42d72;
+
+            margin-top: 0;
+        }
+
+
+        .result p {
+
+            color: #70465b;
+
+            margin:
+                10px 0;
+        }
+
+
+        .result b {
+
+            color: #5b2841;
+        }
+
+
+        /* =========================
+           DETAILS
+        ========================= */
+
+        details {
+
+            margin-top: 18px;
+
+            padding: 15px;
+
+            border-radius: 11px;
+
+            background:
+                #fff1f8;
+
+            border:
+                1px solid #efc5d9;
+        }
+
+
+        summary {
+
+            cursor: pointer;
+
+            color: #d23879;
+
+            font-weight: 700;
+        }
+
+
+        details ul {
+
+            margin-top: 15px;
+
+            padding-left: 22px;
+        }
+
+
+        details li {
+
+            color: #70465b;
+
+            margin-bottom: 7px;
+        }
+
+
+        .pill {
+
+            color: #d23879;
+
+            font-weight: 800;
+
+            background:
+                #ffe4f0;
+
+            border:
+                1px solid #f2bfd5;
+
+            padding:
+                4px 10px;
+
+            border-radius: 20px;
+
+            display: inline-block;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffe3ef,
+                    #ffd3e5
+                );
+
+            color: #71364f;
+
+            padding: 25px 0;
+
+            margin-top: 0;
+
+            border-top:
+                1px solid #efbfd5;
+
+            text-align: center;
+        }
+
+
+        footer .wrap {
+
+            color: #89556d;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            header {
+
+                padding:
+                    18px 0;
+            }
+
+
+            .nav {
+
+                flex-direction: column;
+
+                align-items: stretch;
+            }
+
+
+            .brand {
+
+                text-align: center;
+
+                margin-bottom: 5px;
+            }
+
+
+            .links {
+
+                justify-content: center;
+            }
+
+
+            .links a {
+
+                font-size: 13px;
+
+                padding:
+                    8px 10px;
+            }
+
+
+            main {
+
+                padding:
+                    30px 0 45px;
+            }
+
+
+            .card {
+
+                padding: 22px;
+
+                border-radius: 16px;
+            }
+
+
+            h1 {
+
+                font-size: 2rem;
+            }
+
+
+            .primary {
+
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <div class="wrap nav">
+
+        <a
+            class="brand"
+            href="/"
+        >
+            🛡️ CyberShield Analyzer
+        </a>
+
+
+        <nav class="links">
+
+            <a href="/">
+                🌐 URL Analyzer
+            </a>
+
+            <a href="/qr-scanner">
+                📷 QR Scanner
+            </a>
+
+            <a href="/message-detector">
+                💬 Message Detector
+            </a>
+
+            <a href="/safety-tips">
+                🛡️ Safety Tips
+            </a>
+
+            <a href="/quiz">
+                🧠 Quiz
+            </a>
+
+            <a href="/features">
+                📋 Features
+            </a>
+
+            <a href="/history">
+                📜 History
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main class="wrap">
+
+    <div class="eyebrow">
+        QR CODE CHECK
+    </div>
+
+
+    <h1>
+        📷 Scan a QR Code Safely
+    </h1>
+
+
+    <p>
+        Upload a clear QR code image.
+        The app will decode its contents and
+        analyze the extracted value.
+    </p>
+
+
+
+    <!-- =========================
+         QR UPLOAD CARD
+    ========================= -->
+
+    <section class="card">
+
+        <h2>
+            📸 Upload QR Image
+        </h2>
+
+
+        <form
+            action="/scan-qr"
+            method="POST"
+            enctype="multipart/form-data"
+        >
+
+            <label for="qr_image">
+                QR Code Image
+            </label>
+
+
+            <input
+                class="field"
+                id="qr_image"
+                type="file"
+                name="qr_image"
+                accept="image/*"
+                required
+            >
+
+
+            <button
+                class="primary"
+                type="submit"
+            >
+                🔍 Scan QR Code
+            </button>
+
+        </form>
+
+
+
+        <!-- =========================
+             ERROR
+        ========================= -->
+
+        {% if qr_error %}
+
+        <div
+            class="alert error"
+            role="alert"
+        >
+
+            ❌ {{ qr_error }}
+
+        </div>
+
+        {% endif %}
+
+
+
+        <!-- =========================
+             SUCCESS
+        ========================= -->
+
+        {% if qr_success %}
+
+        <div class="alert success">
+
+            ✅ {{ qr_success }}
+
+        </div>
+
+        {% endif %}
+
+
+
+        <!-- =========================
+             QR RESULT
+        ========================= -->
+
+        {% if qr_url %}
+
+        <div class="result">
+
+            <h2>
+                🔎 Scan Result
+            </h2>
+
+
+            <p>
+
+                <b>
+                    Decoded Content:
+                </b>
+
+                {{ qr_url }}
+
+            </p>
+
+
+            <p>
+
+                <b>
+                    Assessment:
+                </b>
+
+                {{ qr_result }}
+
+            </p>
+
+
+            <p>
+
+                <b>
+                    Estimated Risk:
+                </b>
+
+                <span class="pill">
+
+                    {{ qr_risk_percentage }}%
+
+                </span>
+
+            </p>
+
+
+
+            <!-- =========================
+                 URL FEATURES
+            ========================= -->
+
+            {% if qr_features %}
+
+            <details>
+
+                <summary>
+                    🔎 View URL Features
+                </summary>
+
+
+                <ul>
+
+                    {% for name, value in qr_features.items() %}
+
+                    <li>
+
+                        <b>
+                            {{ name }}:
+                        </b>
+
+                        {{ value }}
+
+                    </li>
+
+                    {% endfor %}
+
+                </ul>
+
+            </details>
+
+            {% endif %}
+
+
+            <p>
+
+                ⚠️ Even a low-risk result cannot guarantee
+                that a link is completely safe.
+
+            </p>
+
+        </div>
+
+        {% endif %}
+
+    </section>
+
+</main>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="wrap">
+
+        🛡️ AI-Based Phishing Detection &amp;
+        Cyber Safety Analyzer
+
+        <br>
+
+        <span>
+            Automated results are estimates, not guarantees.
+        </span>
+
+    </div>
+
+</footer>
+
+
+</body>
+
+</html>

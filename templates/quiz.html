@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cyber Safety Quiz | PhishingDetector</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: auto;
+        }
+
+        body {
+            margin: 0;
+
+            font-family:
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
+            line-height: 1.6;
+
+            background:
+                radial-gradient(
+                    circle at top left,
+                    rgba(255, 157, 204, 0.30),
+                    transparent 34%
+                ),
+                radial-gradient(
+                    circle at bottom right,
+                    rgba(246, 107, 171, 0.18),
+                    transparent 36%
+                ),
+                #fff6fa;
+
+            color: #54283f;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff9dcc,
+                    #f66bab,
+                    #df4289
+                );
+
+            padding: 20px 0;
+
+            border-bottom:
+                1px solid rgba(194, 45, 114, 0.18);
+
+            box-shadow:
+                0 8px 30px rgba(210, 56, 121, 0.20);
+        }
+
+
+        .wrap {
+
+            width: min(1050px, 92%);
+
+            margin: auto;
+        }
+
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        .nav {
+
+            display: flex;
+
+            gap: 15px;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            flex-wrap: wrap;
+        }
+
+
+        .brand {
+
+            font-size: 19px;
+
+            font-weight: 800;
+
+            color: white;
+
+            text-decoration: none;
+
+            text-shadow:
+                0 2px 8px rgba(120, 20, 70, 0.20);
+        }
+
+
+        .links {
+
+            display: flex;
+
+            gap: 8px;
+
+            flex-wrap: wrap;
+
+            justify-content: center;
+        }
+
+
+        .links a {
+
+            color: white;
+
+            text-decoration: none;
+
+            border:
+                1px solid rgba(255, 255, 255, 0.38);
+
+            border-radius: 10px;
+
+            padding: 8px 12px;
+
+            background:
+                rgba(255, 255, 255, 0.15);
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            transition: 0.25s;
+        }
+
+
+        .links a:hover {
+
+            background:
+                rgba(255, 255, 255, 0.30);
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 6px 18px rgba(150, 35, 90, 0.18);
+        }
+
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        main {
+
+            padding:
+                48px 0 70px;
+        }
+
+
+        .eyebrow {
+
+            color: #d23879;
+
+            font-size: 0.85rem;
+
+            font-weight: 800;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 8px;
+        }
+
+
+        h1 {
+
+            font-size:
+                clamp(2rem, 4vw, 3.1rem);
+
+            line-height: 1.15;
+
+            margin: 5px 0 12px;
+
+            color: #6f2349;
+        }
+
+
+        main > .wrap > p {
+
+            color: #80566c;
+
+            font-size: 16px;
+
+            max-width: 850px;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* =========================
+           CARD
+        ========================= */
+
+        .card {
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #ffffff,
+                    #fff8fc
+                );
+
+            border:
+                1px solid #efc5d9;
+
+            border-radius: 20px;
+
+            padding: 30px;
+
+            margin-top: 25px;
+
+            box-shadow:
+                0 14px 40px rgba(185, 61, 117, 0.12);
+        }
+
+
+        /* =========================
+           QUESTIONS
+        ========================= */
+
+        .quiz-question {
+
+            border-bottom:
+                1px solid #efc5d9;
+
+            padding:
+                18px 4px;
+
+            margin-bottom: 5px;
+        }
+
+
+        .quiz-question:last-of-type {
+
+            border-bottom: none;
+        }
+
+
+        .quiz-question p {
+
+            color: #642d49;
+
+            font-size: 17px;
+
+            font-weight: 700;
+
+            margin:
+                0 0 14px;
+        }
+
+
+        .quiz-question label {
+
+            display: block;
+
+            margin:
+                10px 0;
+
+            padding:
+                11px 13px;
+
+            border:
+                1px solid #f0cede;
+
+            border-radius: 10px;
+
+            background:
+                #fffafd;
+
+            color: #70465b;
+
+            cursor: pointer;
+
+            transition: 0.22s;
+        }
+
+
+        .quiz-question label:hover {
+
+            background:
+                #fff0f7;
+
+            border-color:
+                #eaa5c4;
+
+            transform:
+                translateX(2px);
+        }
+
+
+        .quiz-question input[type="radio"] {
+
+            accent-color: #d23879;
+
+            margin-right: 8px;
+
+            cursor: pointer;
+        }
+
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .primary {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f45a9e,
+                    #d23879
+                );
+
+            color: white;
+
+            border: none;
+
+            border-radius: 11px;
+
+            padding:
+                13px 20px;
+
+            font-weight: 800;
+
+            font-size: 15px;
+
+            margin-top: 20px;
+
+            cursor: pointer;
+
+            transition: 0.25s;
+
+            box-shadow:
+                0 8px 22px rgba(210, 56, 121, 0.25);
+        }
+
+
+        .primary:hover {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f76eaa,
+                    #df4289
+                );
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 11px 28px rgba(210, 56, 121, 0.32);
+        }
+
+
+        .btn {
+
+            color: #8d3159;
+
+            text-decoration: none;
+
+            border:
+                1px solid #e9bfd2;
+
+            border-radius: 11px;
+
+            padding:
+                12px 17px;
+
+            background:
+                #fff4f9;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            margin-top: 20px;
+
+            transition: 0.25s;
+        }
+
+
+        .btn:hover {
+
+            background:
+                #ffe8f2;
+
+            border-color:
+                #df9fbd;
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        /* =========================
+           RESULT
+        ========================= */
+
+        .result {
+
+            padding: 22px;
+
+            border-radius: 15px;
+
+            margin-top: 25px;
+
+            overflow-wrap: anywhere;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #fffaff,
+                    #fff4fa
+                );
+
+            border:
+                1px solid #efc5d9;
+
+            border-left:
+                5px solid #e04b91;
+
+            box-shadow:
+                0 8px 25px rgba(185, 61, 117, 0.10);
+        }
+
+
+        .result h2 {
+
+            color: #c42d72;
+
+            margin-top: 0;
+
+            margin-bottom: 15px;
+        }
+
+
+        .result ul {
+
+            margin:
+                12px 0 0;
+
+            padding-left: 22px;
+        }
+
+
+        .result li {
+
+            color: #70465b;
+
+            margin-bottom: 10px;
+        }
+
+
+        .result b {
+
+            color: #5b2841;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffe3ef,
+                    #ffd3e5
+                );
+
+            color: #71364f;
+
+            padding: 25px 0;
+
+            border-top:
+                1px solid #efbfd5;
+
+            text-align: center;
+        }
+
+
+        footer .wrap {
+
+            color: #89556d;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            header {
+
+                padding:
+                    18px 0;
+            }
+
+
+            .nav {
+
+                flex-direction: column;
+
+                align-items: stretch;
+            }
+
+
+            .brand {
+
+                text-align: center;
+
+                margin-bottom: 5px;
+            }
+
+
+            .links {
+
+                justify-content: center;
+            }
+
+
+            .links a {
+
+                font-size: 13px;
+
+                padding:
+                    8px 10px;
+            }
+
+
+            main {
+
+                padding:
+                    30px 0 45px;
+            }
+
+
+            h1 {
+
+                font-size: 2rem;
+            }
+
+
+            .card {
+
+                padding: 22px;
+
+                border-radius: 16px;
+            }
+
+
+            .primary,
+            .btn {
+
+                width: 100%;
+
+                display: block;
+            }
+
+
+            .btn {
+
+                text-align: center;
+
+                margin-left: 0;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <div class="wrap nav">
+
+        <a
+            class="brand"
+            href="/"
+        >
+            🛡️ CyberShield Analyzer
+        </a>
+
+
+        <nav class="links">
+
+            <a href="/">
+                🌐 URL Analyzer
+            </a>
+
+            <a href="/qr-scanner">
+                📷 QR Scanner
+            </a>
+
+            <a href="/message-detector">
+                💬 Message Detector
+            </a>
+
+            <a href="/safety-tips">
+                🛡️ Safety Tips
+            </a>
+
+            <a href="/quiz">
+                🧠 Quiz
+            </a>
+
+            <a href="/features">
+                📋 Features
+            </a>
+
+            <a href="/history">
+                📜 History
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main class="wrap">
+
+    <div class="eyebrow">
+        KNOWLEDGE CHECK
+    </div>
+
+
+    <h1>
+        🧠 Cyber-safety awareness quiz
+    </h1>
+
+
+    <p>
+        Choose an answer for each scenario,
+        then check your score and explanations.
+    </p>
+
+
+
+    <!-- =========================
+         QUIZ CARD
+    ========================= -->
+
+    <section class="card">
+
+        <form id="quizForm">
+
+
+            <!-- QUESTION 1 -->
+
+            <div class="quiz-question">
+
+                <p>
+                    1. A message asks for your OTP to prevent
+                    account blocking. What should you do?
+                </p>
+
+
+                <label>
+                    <input
+                        type="radio"
+                        name="q1"
+                        value="a"
+                        required
+                    >
+                    Share it immediately
+                </label>
+
+
+                <label>
+                    <input
+                        type="radio"
+                        name="q1"
+                        value="b"
+                    >
+                    Do not share it; verify through official channels
+                </label>
+
+
+                <label>
+                    <input
+                        type="radio"
+                        name="q1"
+                        value="c"
+                    >
+                    Forward it to friends
+                </label>
+
+            </div>
+
+
+
+            <!-- QUESTION 2 -->
+
+            <div class="quiz-question">
+
+                <p>
+                    2. Does HTTPS guarantee that a website
+                    is legitimate?
+                </p>
+
+
+                <label>
+                    <input
+                        type="radio"
+                        name="q2"
+                        value="a"
+                        required
+                    >
+                    Yes, always
+                </label>
+
+
+                <label>
+                    <input
+                        type="radio"
+                        name="q2"
+                        value="b"
+                    >
+                    No; it encrypts the connection but
+                    doesn't prove trustworthiness
+                </label>
+
+
+                <label>
+                    <input
+                        type="radio"
+                        name="q2"
+                        value="c"
+                    >
+                    Only on phones
+                </label>
+
+            </div>
+
+
+
+            <!-- QUESTION 3 -->
+
+            <div class="quiz-question">
+
+                <p>
+                    3. A QR code asks for an unexpected payment.
+                    What is the safest step?
+                </p>
+
+
+                <label>
+                    <input
+                        type="radio"
+                        name="q3"
+                        value="a"
+                        required
+                    >
+                    Pay quickly
+                </label>
+
+
+                <label>
+                    <input
+                        type="radio"
+                        name="q3"
+                        value="b"
+                    >
+                    Verify the request and destination independently
+                </label>
+
+
+                <label>
+                    <input
+                        type="radio"
+                        name="q3"
+                        value="c"
+                    >
+                    Assume all QR codes are safe
+                </label>
+
+            </div>
+
+
+
+            <!-- QUESTION 4 -->
+
+            <div class="quiz-question">
+
+                <p>
+                    4. You receive an unexpected prize message.
+                    What should you do?
+                </p>
+
+
+                <label>
+                    <input
+                        type="radio"
+                        name="q4"
+                        value="a"
+                        required
+                    >
+                    Provide bank details
+                </label>
+
+
+                <label>
+                    <input
+                        type="radio"
+                        name="q4"
+                        value="b"
+                    >
+                    Click every link
+                </label>
+
+
+                <label>
+                    <input
+                        type="radio"
+                        name="q4"
+                        value="c"
+                    >
+                    Verify through an official source
+                </label>
+
+            </div>
+
+
+
+            <!-- BUTTONS -->
+
+            <button
+                class="primary"
+                type="submit"
+            >
+                ✅ Check Answers
+            </button>
+
+
+            <button
+                class="btn"
+                type="reset"
+                id="resetQuiz"
+            >
+                🔄 Try Again
+            </button>
+
+        </form>
+
+
+
+        <!-- =========================
+             QUIZ RESULT
+        ========================= -->
+
+        <div
+            id="quizResult"
+            class="result"
+            hidden
+            aria-live="polite"
+        ></div>
+
+    </section>
+
+</main>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="wrap">
+
+        🛡️ AI-Based Phishing Detection &amp;
+        Cyber Safety Analyzer
+
+        <br>
+
+        <span>
+            Automated results are estimates, not guarantees.
+        </span>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =========================
+     QUIZ JAVASCRIPT
+========================= -->
+
+<script>
+
+    const form =
+        document.getElementById("quizForm");
+
+    const out =
+        document.getElementById("quizResult");
+
+
+    const answers = {
+
+        q1: [
+            "b",
+            "Never share OTPs; verify unexpected alerts through official channels."
+        ],
+
+        q2: [
+            "b",
+            "HTTPS encrypts the connection but does not prove a site is legitimate."
+        ],
+
+        q3: [
+            "b",
+            "Verify the payment request and destination before proceeding."
+        ],
+
+        q4: [
+            "c",
+            "Unexpected prizes can be a lure; verify independently."
+        ]
+
+    };
+
+
+    form.addEventListener(
+        "submit",
+        function (e) {
+
+            e.preventDefault();
+
+            let score = 0;
+
+            let items = [];
+
+
+            for (
+                const [name, data]
+                of Object.entries(answers)
+            ) {
+
+                const selected =
+                    form.querySelector(
+                        'input[name="' +
+                        name +
+                        '"]:checked'
+                    );
+
+
+                if (
+                    selected &&
+                    selected.value === data[0]
+                ) {
+
+                    score++;
+
+                }
+
+
+                items.push(
+                    "<li><b>" +
+                    name.toUpperCase() +
+                    ":</b> " +
+                    data[1] +
+                    "</li>"
+                );
+
+            }
+
+
+            out.hidden = false;
+
+
+            out.innerHTML =
+                "<h2>Your score: " +
+                score +
+                " / 4</h2>" +
+
+                "<ul>" +
+                items.join("") +
+                "</ul>";
+
+        }
+    );
+
+
+    document
+        .getElementById("resetQuiz")
+        .addEventListener(
+            "click",
+            function () {
+
+                out.hidden = true;
+
+                out.innerHTML = "";
+
+            }
+        );
+
+</script>
+
+
+</body>
+
+</html>

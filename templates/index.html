@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI-Based Phishing Detection & Cyber Safety Analyzer</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: auto;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at top left,
+                    rgba(255, 105, 180, 0.20),
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at bottom right,
+                    rgba(255, 182, 213, 0.28),
+                    transparent 35%
+                ),
+                #fff6fa;
+
+            color: #4a2639;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff9dcc,
+                    #f66bab,
+                    #df4289
+                );
+
+            color: white;
+
+            padding: 42px 20px;
+
+            text-align: center;
+
+            box-shadow:
+                0 8px 25px rgba(207, 54, 119, 0.20);
+        }
+
+        header h1 {
+            margin: 0;
+
+            font-size: 32px;
+
+            font-weight: 800;
+
+            letter-spacing: 0.3px;
+        }
+
+        header p {
+            margin: 12px 0 0;
+
+            font-size: 16px;
+
+            opacity: 0.95;
+        }
+
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        .navigation {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            padding: 15px;
+
+            background: #ffffff;
+
+            border-bottom:
+                1px solid #f1c7da;
+
+            box-shadow:
+                0 4px 15px rgba(180, 55, 110, 0.06);
+        }
+
+        .nav-btn {
+            text-decoration: none;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f45d9f,
+                    #d43a7f
+                );
+
+            color: white;
+
+            padding: 10px 22px;
+
+            border-radius: 9px;
+
+            font-weight: 700;
+
+            transition: 0.2s;
+
+            box-shadow:
+                0 5px 15px rgba(210, 58, 127, 0.16);
+        }
+
+        .nav-btn:hover {
+            background:
+                linear-gradient(
+                    135deg,
+                    #ed4f96,
+                    #c92f73
+                );
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 8px 20px rgba(210, 58, 127, 0.25);
+        }
+
+
+        /* =========================
+           MAIN CONTAINER
+        ========================= */
+
+        .container {
+            width: 92%;
+
+            max-width: 1100px;
+
+            margin: 35px auto;
+        }
+
+
+        /* =========================
+           MAIN URL CARD
+        ========================= */
+
+        .main-url {
+            background:
+                linear-gradient(
+                    145deg,
+                    #ffffff,
+                    #fff8fc
+                );
+
+            padding: 38px;
+
+            margin-bottom: 35px;
+
+            border-radius: 20px;
+
+            border:
+                1px solid #efc5d9;
+
+            box-shadow:
+                0 10px 35px rgba(171, 50, 104, 0.10);
+        }
+
+        .main-url h2 {
+            margin-top: 0;
+
+            color: #c42d72;
+
+            font-size: 29px;
+
+            text-align: center;
+        }
+
+        .main-url > p {
+            text-align: center;
+
+            color: #76596a;
+
+            font-size: 16px;
+
+            line-height: 1.6;
+
+            margin-bottom: 30px;
+        }
+
+
+        /* =========================
+           URL INPUT
+        ========================= */
+
+        label {
+            display: block;
+
+            font-weight: 700;
+
+            margin-bottom: 9px;
+
+            color: #542c42;
+        }
+
+        input[type="text"] {
+            width: 100%;
+
+            padding: 17px 16px;
+
+            border:
+                1px solid #e5bfd1;
+
+            border-radius: 10px;
+
+            font-size: 16px;
+
+            margin-bottom: 17px;
+
+            background: #fffafd;
+
+            color: #4a2639;
+
+            outline: none;
+
+            transition: 0.2s;
+        }
+
+        input[type="text"]::placeholder {
+            color: #a78a99;
+        }
+
+        input[type="text"]:focus {
+            border-color: #e85a9b;
+
+            box-shadow:
+                0 0 0 4px rgba(232, 90, 155, 0.12);
+        }
+
+
+        /* =========================
+           MAIN BUTTON
+        ========================= */
+
+        .analyze-btn {
+            width: 100%;
+
+            border: none;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f45a9e,
+                    #d23879
+                );
+
+            color: white;
+
+            padding: 16px 25px;
+
+            border-radius: 10px;
+
+            cursor: pointer;
+
+            font-size: 17px;
+
+            font-weight: 700;
+
+            transition: 0.2s;
+
+            box-shadow:
+                0 6px 18px rgba(210, 56, 121, 0.20);
+        }
+
+        .analyze-btn:hover {
+            background:
+                linear-gradient(
+                    135deg,
+                    #f86aad,
+                    #cb2f72
+                );
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 9px 24px rgba(210, 56, 121, 0.28);
+        }
+
+
+        /* =========================
+           RESULT
+        ========================= */
+
+        .result {
+            margin-top: 25px;
+
+            padding: 22px;
+
+            border-radius: 12px;
+
+            background: #fff8fc;
+
+            border-left:
+                6px solid #d83d83;
+
+            box-shadow:
+                0 5px 18px rgba(175, 50, 105, 0.07);
+        }
+
+        .result h3 {
+            color: #c72d74;
+        }
+
+        .safe {
+            border-left-color: #28a96c;
+
+            background: #f2fcf7;
+        }
+
+        .danger {
+            border-left-color: #df4562;
+
+            background: #fff3f5;
+        }
+
+        .warning {
+            border-left-color: #d99627;
+
+            background: #fffaf0;
+        }
+
+        .risk {
+            font-size: 27px;
+
+            font-weight: 700;
+
+            margin: 13px 0;
+
+            color: #c52e73;
+        }
+
+        .feature-list {
+            padding-left: 20px;
+        }
+
+        .feature-list li {
+            margin-bottom: 9px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =========================
+           OTHER FEATURES TITLE
+        ========================= */
+
+        .features-title {
+            text-align: center;
+
+            color: #c42d72;
+
+            margin-top: 10px;
+
+            margin-bottom: 8px;
+
+            font-size: 26px;
+        }
+
+        .features-subtitle {
+            text-align: center;
+
+            color: #76596a;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* =========================
+           FEATURE BUTTON GRID
+        ========================= */
+
+        .feature-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 18px;
+
+            margin-bottom: 35px;
+        }
+
+
+        /* =========================
+           FEATURE BUTTON
+        ========================= */
+
+        .tool-btn {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            min-height: 90px;
+
+            padding: 20px;
+
+            text-decoration: none;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #ffffff,
+                    #fff8fc
+                );
+
+            color: #bd2d6d;
+
+            border:
+                1px solid #efc8da;
+
+            border-radius: 14px;
+
+            font-size: 17px;
+
+            font-weight: 700;
+
+            box-shadow:
+                0 6px 20px rgba(170, 50, 105, 0.08);
+
+            transition: 0.2s;
+
+            text-align: center;
+        }
+
+        .tool-btn:hover {
+            transform: translateY(-3px);
+
+            background: #fff0f7;
+
+            border-color: #df8eb2;
+
+            color: #a92160;
+
+            box-shadow:
+                0 10px 25px rgba(170, 50, 105, 0.13);
+        }
+
+
+        /* =========================
+           INFO CARD
+        ========================= */
+
+        .info-card {
+            background:
+                linear-gradient(
+                    145deg,
+                    #ffffff,
+                    #fff8fc
+                );
+
+            padding: 25px;
+
+            border-radius: 15px;
+
+            border:
+                1px solid #efc8da;
+
+            box-shadow:
+                0 6px 20px rgba(170, 50, 105, 0.07);
+
+            margin-bottom: 25px;
+        }
+
+        .info-card h2 {
+            color: #c42d72;
+
+            margin-top: 0;
+        }
+
+        .info-card p {
+            line-height: 1.6;
+
+            color: #76596a;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffe3ef,
+                    #ffd3e5
+                );
+
+            color: #713c59;
+
+            padding: 25px;
+
+            margin-top: 45px;
+
+            border-top:
+                1px solid #f0bfd5;
+        }
+
+        footer p {
+            margin: 6px 0;
+
+            opacity: 0.92;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            header {
+                padding: 32px 15px;
+            }
+
+            header h1 {
+                font-size: 23px;
+
+                line-height: 1.35;
+            }
+
+            header p {
+                font-size: 14px;
+            }
+
+            .container {
+                width: 94%;
+
+                margin-top: 22px;
+            }
+
+            .navigation {
+                flex-direction: column;
+
+                align-items: center;
+            }
+
+            .nav-btn {
+                width: 90%;
+
+                text-align: center;
+            }
+
+            .main-url {
+                padding: 23px;
+
+                border-radius: 15px;
+            }
+
+            .main-url h2 {
+                font-size: 24px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tool-btn {
+                min-height: 75px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header>
+
+    <h1>
+        🛡️ AI-Based Phishing Detection & Cyber Safety Analyzer
+    </h1>
+
+    <p>
+        Smart protection against phishing, scams and suspicious links
+    </p>
+
+</header>
+
+
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<div class="navigation">
+
+    <!-- Home button removed because this is already the Home page -->
+
+    <a
+        href="/history"
+        class="nav-btn"
+    >
+        📜 Scan History
+    </a>
+
+</div>
+
+
+
+<!-- =========================================================
+     MAIN CONTAINER
+========================================================= -->
+
+<div class="container">
+
+
+<!-- =========================================================
+     MAIN URL ANALYZER
+========================================================= -->
+
+<div class="main-url">
+
+    <h2>
+        🌐 URL Safety Check
+    </h2>
+
+    <p>
+        Enter a website URL below to check whether it is
+        likely safe or potentially phishing.
+    </p>
+
+
+    <form
+        action="/analyze-url"
+        method="POST"
+    >
+
+        <label for="url">
+            Website URL
+        </label>
+
+        <input
+            type="text"
+            id="url"
+            name="url"
+            placeholder="https://example.com"
+            value="{{ analyzed_url if analyzed_url else '' }}"
+            required
+        >
+
+        <button
+            type="submit"
+            class="analyze-btn"
+        >
+            🔍 Analyze URL
+        </button>
+
+    </form>
+
+
+    <!-- URL ERROR -->
+
+    {% if error %}
+
+    <div class="result danger">
+
+        <strong>
+            ❌ Error
+        </strong>
+
+        <p>
+            {{ error }}
+        </p>
+
+    </div>
+
+    {% endif %}
+
+
+    <!-- URL RESULT -->
+
+    {% if result %}
+
+    <div
+        class="result
+        {% if 'Phishing' in result %}
+            danger
+        {% else %}
+            safe
+        {% endif %}"
+    >
+
+        <h3>
+            🔎 Analysis Result
+        </h3>
+
+
+        <p>
+
+            <strong>
+                URL:
+            </strong>
+
+            {{ analyzed_url }}
+
+        </p>
+
+
+        <p>
+
+            <strong>
+                Result:
+            </strong>
+
+            {{ result }}
+
+        </p>
+
+
+        <div class="risk">
+
+            Risk:
+            {{ risk_percentage }}%
+
+        </div>
+
+
+        {% if features %}
+
+        <h4>
+            🔎 Detected URL Features
+        </h4>
+
+        <ul class="feature-list">
+
+            {% for feature, value in features.items() %}
+
+            <li>
+
+                <strong>
+                    {{ feature }}:
+                </strong>
+
+                {{ value }}
+
+            </li>
+
+            {% endfor %}
+
+        </ul>
+
+        {% endif %}
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+
+
+<!-- =========================================================
+     OTHER FEATURES
+========================================================= -->
+
+<h2 class="features-title">
+    🛡️ Cyber Safety Tools
+</h2>
+
+<p class="features-subtitle">
+    Select a tool below to open its separate page.
+</p>
+
+
+<div class="feature-grid">
+
+
+    <!-- QR SCANNER -->
+
+    <a
+        href="/qr-scanner"
+        class="tool-btn"
+    >
+        📷 QR Code Scanner
+    </a>
+
+
+    <!-- MESSAGE DETECTOR -->
+
+    <a
+        href="/message-detector"
+        class="tool-btn"
+    >
+        💬 Scam / Message Detector
+    </a>
+
+
+    <!-- SAFETY TIPS -->
+
+    <a
+        href="/safety-tips"
+        class="tool-btn"
+    >
+        🛡️ Cyber Safety Tips
+    </a>
+
+
+    <!-- QUIZ -->
+
+    <a
+        href="/quiz"
+        class="tool-btn"
+    >
+        🧠 Cyber Safety Awareness Quiz
+    </a>
+
+
+    <!-- PROJECT FEATURES -->
+
+    <a
+        href="/features"
+        class="tool-btn"
+    >
+        📋 Project Features
+    </a>
+
+
+    <!-- HISTORY -->
+
+    <a
+        href="/history"
+        class="tool-btn"
+    >
+        📜 Scan History
+    </a>
+
+</div>
+
+
+
+<!-- =========================================================
+     ABOUT PROJECT
+========================================================= -->
+
+<div class="info-card">
+
+    <h2>
+        🔐 About This Project
+    </h2>
+
+    <p>
+        This AI-Based Phishing Detection & Cyber Safety Analyzer
+        helps users identify potentially dangerous websites,
+        suspicious messages and phishing-related threats.
+    </p>
+
+    <p>
+        The system provides risk information and cyber-safety
+        guidance to help users stay safer while using the internet.
+    </p>
+
+</div>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+    <p>
+        🛡️ AI-Based Phishing Detection & Cyber Safety Analyzer
+    </p>
+
+    <p>
+        Cyber Safety Awareness Mini Project
+    </p>
+
+</footer>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+    /*
+       Save the current scroll position before submitting
+       the URL form so the page does not jump unexpectedly.
+    */
+
+    const urlForm = document.querySelector(
+        'form[action="/analyze-url"]'
+    );
+
+    if (urlForm) {
+
+        urlForm.addEventListener("submit", function () {
+
+            sessionStorage.setItem(
+                "urlScrollPosition",
+                window.scrollY
+            );
+
+        });
+
+    }
+
+
+    /*
+       Restore scroll position after page reload.
+    */
+
+    window.addEventListener("load", function () {
+
+        const savedPosition =
+            sessionStorage.getItem("urlScrollPosition");
+
+        if (savedPosition !== null) {
+
+            window.scrollTo(
+                0,
+                parseInt(savedPosition)
+            );
+
+            sessionStorage.removeItem(
+                "urlScrollPosition"
+            );
+
+        }
+
+    });
+
+</script>
+
+
+</body>
+
+</html>

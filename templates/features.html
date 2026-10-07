@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Project Features | PhishingDetector</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:
+        radial-gradient(circle at top left, #ffd6ea 0%, transparent 35%),
+        radial-gradient(circle at bottom right, #ffe5f1 0%, transparent 35%),
+        #fff7fb;
+    color:#3d1830;
+    font-family:Segoe UI,Arial,sans-serif;
+    line-height:1.6;
+}
+
+header{
+    background:linear-gradient(135deg,#ff8fc4,#f45b9f,#df3d87);
+    padding:18px;
+    box-shadow:0 4px 18px rgba(190,45,112,.18);
+}
+
+footer{
+    background:linear-gradient(135deg,#ffe1ef,#ffd1e5);
+    border-top:1px solid #f3b4d0;
+    padding:20px 18px;
+    color:#7b4964;
+}
+
+.wrap{
+    width:min(1050px,92%);
+    margin:auto;
+}
+
+.nav{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+}
+
+.brand{
+    font-weight:800;
+    color:#ffffff;
+    text-decoration:none;
+    font-size:1.1rem;
+}
+
+.links{
+    display:flex;
+    gap:7px;
+    flex-wrap:wrap;
+}
+
+.links a,
+.btn{
+    color:#6e234c;
+    text-decoration:none;
+    border:1px solid #f0a9ca;
+    border-radius:10px;
+    padding:8px 11px;
+    background:rgba(255,255,255,.82);
+    transition:.2s ease;
+}
+
+.links a:hover,
+.btn:hover{
+    background:#fff;
+    border-color:#e94d96;
+    color:#c52770;
+    transform:translateY(-1px);
+}
+
+main{
+    padding:35px 0 60px;
+}
+
+.eyebrow{
+    color:#d52c79;
+    font-size:.8rem;
+    font-weight:bold;
+    letter-spacing:1.5px;
+}
+
+h1{
+    font-size:clamp(2rem,4vw,3rem);
+    line-height:1.15;
+    margin:10px 0;
+    color:#531d3c;
+}
+
+h2{
+    color:#642143;
+}
+
+h3{
+    color:#642143;
+    margin-bottom:8px;
+}
+
+p,
+.muted{
+    color:#79556a;
+}
+
+.card{
+    background:rgba(255,255,255,.9);
+    border:1px solid #f2bfd6;
+    border-radius:17px;
+    padding:22px;
+    margin-top:20px;
+    box-shadow:0 8px 25px rgba(187,55,112,.08);
+    transition:.2s ease;
+}
+
+.card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 30px rgba(187,55,112,.13);
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:14px;
+}
+
+.field{
+    display:block;
+    width:100%;
+    margin-top:7px;
+    background:#fff8fc;
+    color:#4a2037;
+    border:1px solid #efb2ce;
+    border-radius:10px;
+    padding:12px;
+    font:inherit;
+}
+
+label{
+    display:block;
+    margin:9px 0;
+}
+
+.primary{
+    background:linear-gradient(135deg,#f75ca3,#d92f79);
+    color:#ffffff;
+    border:0;
+    border-radius:10px;
+    padding:12px 16px;
+    font-weight:800;
+    margin-top:14px;
+    cursor:pointer;
+    box-shadow:0 5px 14px rgba(216,47,121,.2);
+}
+
+.primary:hover{
+    background:linear-gradient(135deg,#ff70b0,#d32974);
+}
+
+.alert,
+.result{
+    padding:14px;
+    border:1px solid #edb3cd;
+    border-radius:12px;
+    margin-top:16px;
+    overflow-wrap:anywhere;
+    background:#fffafd;
+}
+
+.error{
+    border-color:#ef8cae;
+}
+
+.success{
+    border-color:#e68bb8;
+}
+
+.pill{
+    color:#d42b78;
+    font-weight:800;
+    font-size:.85rem;
+}
+
+.quiz-question{
+    border-bottom:1px solid #f1c5d9;
+    padding:12px 0;
+}
+
+@media(max-width:700px){
+    .nav{
+        align-items:flex-start;
+    }
+
+    .links{
+        width:100%;
+    }
+
+    .links a{
+        flex:1 1 auto;
+        text-align:center;
+    }
+
+    main{
+        padding-top:25px;
+    }
+
+    .card{
+        padding:18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="wrap nav">
+
+<a class="brand" href="/">CyberShield Analyzer</a>
+
+<nav class="links">
+<a href="/">URL Analyzer</a>
+<a href="/qr-scanner">QR Scanner</a>
+<a href="/message-detector">Message Detector</a>
+<a href="/safety-tips">Safety Tips</a>
+<a href="/quiz">Quiz</a>
+<a href="/features">Features</a>
+<a href="/history">History</a>
+</nav>
+
+</div>
+</header>
+
+<main class="wrap">
+
+<div class="eyebrow">PROJECT OVERVIEW</div>
+
+<h1>Features of the analyzer</h1>
+
+<p>
+Explore the project's analysis tools, scan history, and cyber-safety learning pages.
+</p>
+
+<section class="grid">
+
+<article class="card">
+<span class="pill">01 · URL</span>
+<h3>Website URL Analysis</h3>
+<p>
+Uses the trained model and extracted URL features to estimate phishing risk.
+</p>
+<a class="btn" href="/">Open URL Analyzer →</a>
+</article>
+
+<article class="card">
+<span class="pill">02 · QR</span>
+<h3>QR Code Scanner</h3>
+<p>
+Decodes an uploaded QR image and analyzes the extracted value as a URL.
+</p>
+<a class="btn" href="/qr-scanner">Open QR Scanner →</a>
+</article>
+
+<article class="card">
+<span class="pill">03 · MESSAGE</span>
+<h3>Message Scam Detection</h3>
+<p>
+Checks text for common patterns involving urgency, payments, OTPs, links, and sensitive information.
+</p>
+<a class="btn" href="/message-detector">Check a Message →</a>
+</article>
+
+<article class="card">
+<span class="pill">04 · HISTORY</span>
+<h3>Scan History</h3>
+<p>
+Stores URL, QR, and message scan records in the SQLite history database.
+</p>
+<a class="btn" href="/history">View Scan History →</a>
+</article>
+
+<article class="card">
+<span class="pill">05 · LEARN</span>
+<h3>Cyber Safety Tips</h3>
+<p>
+Practical reminders for checking links and protecting sensitive information.
+</p>
+<a class="btn" href="/safety-tips">Read Safety Tips →</a>
+</article>
+
+<article class="card">
+<span class="pill">06 · QUIZ</span>
+<h3>Awareness Quiz</h3>
+<p>
+Browser-based quiz with instant scoring and explanations.
+</p>
+<a class="btn" href="/quiz">Take the Quiz →</a>
+</article>
+
+</section>
+
+<section class="card">
+
+<h2>Important limitations</h2>
+
+<p>
+Model predictions and keyword-based checks are estimates, not definitive proof.
+Verify suspicious items through trusted official sources.
+</p>
+
+</section>
+
+</main>
+
+<footer>
+<div class="wrap">
+AI-Based Phishing Detection &amp; Cyber Safety Analyzer ·
+Automated results are estimates, not guarantees.
+</div>
+</footer>
+
+</body>
+</html>
