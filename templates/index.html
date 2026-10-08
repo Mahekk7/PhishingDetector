@@ -41,10 +41,6 @@
             box-shadow: 0 6px 22px rgba(11,31,58,0.12);
         }
 
-        /* =====================================================
-           TOP BRAND / PROJECT HEADING
-        ===================================================== */
-
         .top-brand {
             max-width: 1100px;
             margin: 0 auto;
@@ -1361,8 +1357,10 @@
         </div>
 
 
+        <!-- FIXED: Flask route is /analyze-url -->
+
         <form
-            action="/analyze"
+            action="/analyze-url"
             method="POST"
         >
 
@@ -1463,8 +1461,6 @@
         <div class="widget-grid">
 
 
-            <!-- INTELLIGENT ANALYSIS -->
-
             <div class="feature-widget">
 
                 <div class="widget-icon">
@@ -1484,8 +1480,6 @@
 
             </div>
 
-
-            <!-- THREAT DETECTION -->
 
             <div class="feature-widget">
 
@@ -1507,8 +1501,6 @@
             </div>
 
 
-            <!-- RISK SCORING -->
-
             <div class="feature-widget">
 
                 <div class="widget-icon">
@@ -1528,8 +1520,6 @@
 
             </div>
 
-
-            <!-- FAST ANALYSIS -->
 
             <div class="feature-widget">
 
@@ -1624,13 +1614,15 @@
         <div class="result-body">
 
 
+            <!-- FIXED: Flask sends analyzed_url -->
+
             <div class="result-url">
 
                 <strong>
                     Analyzed URL:
                 </strong>
 
-                {{ url }}
+                {{ analyzed_url }}
 
             </div>
 
@@ -1671,19 +1663,47 @@
                     <ul class="reason-list">
 
 
-                        {% for reason in reasons %}
+                        {% if features %}
 
-                        <li>
+                            {% for feature, value in features.items() %}
 
-                            <i data-lucide="circle-check"></i>
+                            <li>
 
-                            <span>
-                                {{ reason }}
-                            </span>
+                                {% if value %}
 
-                        </li>
+                                <i data-lucide="circle-check"></i>
 
-                        {% endfor %}
+                                <span>
+                                    {{ feature }} detected: {{ value }}
+                                </span>
+
+                                {% else %}
+
+                                <i data-lucide="circle-check"></i>
+
+                                <span>
+                                    {{ feature }}: Not detected
+                                </span>
+
+                                {% endif %}
+
+                            </li>
+
+                            {% endfor %}
+
+                        {% else %}
+
+                            <li>
+
+                                <i data-lucide="circle-check"></i>
+
+                                <span>
+                                    URL characteristics were analyzed successfully.
+                                </span>
+
+                            </li>
+
+                        {% endif %}
 
 
                     </ul>
