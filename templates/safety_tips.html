@@ -1,345 +1,767 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Cyber Safety Tips | PhishingDetector</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-*{
-    box-sizing:border-box;
-}
+    <title>Cyber Safety Tips | PhishingDetector</title>
 
-body{
-    margin:0;
-    background:
-        radial-gradient(circle at top left, #ffe5f1 0%, transparent 35%),
-        radial-gradient(circle at bottom right, #ffd9ea 0%, transparent 35%),
-        #fff7fb;
-    color:#4a2638;
-    font-family:Segoe UI,Arial,sans-serif;
-    line-height:1.6;
-}
+    <!-- Professional Icon Library -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-/* HEADER */
-header{
-    background:linear-gradient(135deg,#ff9dcc,#f66bab,#df4289);
-    border-bottom:1px solid #ed9fc1;
-    padding:18px;
-    box-shadow:0 5px 20px rgba(205,65,125,.12);
-}
+    <style>
 
-.wrap{
-    width:min(1050px,92%);
-    margin:auto;
-}
+        * {
+            box-sizing: border-box;
+        }
 
-.nav{
-    display:flex;
-    gap:15px;
-    align-items:center;
-    justify-content:space-between;
-    flex-wrap:wrap;
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-.brand{
-    font-weight:800;
-    color:white;
-    text-decoration:none;
-    font-size:1.1rem;
-}
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #ffffff;
+            color: #172033;
+            line-height: 1.6;
+        }
 
-.links{
-    display:flex;
-    gap:7px;
-    flex-wrap:wrap;
-}
+        /* =========================
+           HEADER
+        ========================= */
 
-.links a,
-.btn{
-    color:#6a2948;
-    text-decoration:none;
-    border:1px solid rgba(255,255,255,.7);
-    border-radius:10px;
-    padding:8px 11px;
-    background:rgba(255,255,255,.75);
-    font-size:.9rem;
-    font-weight:600;
-    transition:.2s;
-}
+        header {
+            background: #0b1f3a;
+            color: #ffffff;
+            padding: 18px 0;
+            border-bottom: 1px solid #102b4d;
+            box-shadow: 0 4px 18px rgba(15, 23, 42, 0.12);
+        }
 
-.links a:hover{
-    background:white;
-    transform:translateY(-1px);
-}
+        .wrap {
+            width: min(1100px, 92%);
+            margin: auto;
+        }
 
-/* MAIN */
-main{
-    padding:42px 0 65px;
-}
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
 
-.eyebrow{
-    color:#d23879;
-    font-size:.8rem;
-    font-weight:800;
-    letter-spacing:1.8px;
-}
+        /* =========================
+           BRAND
+        ========================= */
 
-h1{
-    font-size:clamp(2rem,4vw,3rem);
-    line-height:1.15;
-    margin:10px 0;
-    color:#56243d;
-}
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
+            text-decoration: none;
+            white-space: nowrap;
+        }
 
-h2{
-    color:#682743;
-}
+        .brand svg {
+            width: 21px;
+            height: 21px;
+            stroke-width: 1.8;
+        }
 
-h3{
-    color:#702747;
-    margin-top:0;
-}
+        /* =========================
+           NAVIGATION
+        ========================= */
 
-p,
-.muted{
-    color:#7c5366;
-}
+        .links {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
 
-/* GRID */
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:16px;
-}
+        .links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #dbe7f3;
+            text-decoration: none;
+            padding: 8px 10px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            transition: 0.2s ease;
+        }
 
-/* CARDS */
-.card{
-    background:rgba(255,255,255,.9);
-    border:1px solid #efc5d9;
-    border-radius:18px;
-    padding:22px;
-    margin-top:20px;
-    box-shadow:0 10px 28px rgba(194,65,119,.08);
-    transition:transform .2s, box-shadow .2s;
-}
+        .links a svg {
+            width: 15px;
+            height: 15px;
+        }
 
-.grid .card:hover{
-    transform:translateY(-4px);
-    box-shadow:0 15px 32px rgba(194,65,119,.14);
-}
+        .links a:hover {
+            background: #123b66;
+            color: #ffffff;
+        }
 
-/* NUMBER / TIP STYLE */
-.grid .card h3{
-    position:relative;
-    padding-left:2px;
-}
+        /* =========================
+           MAIN
+        ========================= */
 
-/* CHECKLIST */
-ul{
-    padding-left:22px;
-}
+        main {
+            padding: 52px 0 75px;
+        }
 
-li{
-    margin:9px 0;
-    color:#70465a;
-}
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #2563eb;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.6px;
+            margin-bottom: 10px;
+        }
 
-li::marker{
-    color:#d23879;
-}
+        .eyebrow svg {
+            width: 16px;
+            height: 16px;
+        }
 
-/* FOOTER */
-footer{
-    background:linear-gradient(135deg,#ffe3ef,#ffd3e5);
-    border-top:1px solid #efbfd5;
-    color:#87556d;
-    padding:20px 18px;
-    font-size:.9rem;
-}
+        h1 {
+            font-size: clamp(2rem, 4vw, 3.1rem);
+            line-height: 1.15;
+            margin: 0 0 14px;
+            color: #0b1f3a;
+            font-weight: 750;
+            letter-spacing: -0.6px;
+        }
 
-/* RESPONSIVE */
-@media(max-width:700px){
+        .intro {
+            color: #64748b;
+            font-size: 16px;
+            max-width: 780px;
+            margin: 0 0 32px;
+        }
 
-    header{
-        padding:15px;
-    }
+        /* =========================
+           TIPS GRID
+        ========================= */
 
-    .nav{
-        align-items:flex-start;
-    }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
 
-    .brand{
-        width:100%;
-        margin-bottom:5px;
-    }
+        /* =========================
+           TIP CARDS
+        ========================= */
 
-    .links{
-        width:100%;
-    }
+        .card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 24px;
+            box-shadow: 0 6px 20px rgba(15, 23, 42, 0.045);
+            transition: 0.2s ease;
+        }
 
-    .links a{
-        padding:7px 9px;
-        font-size:.82rem;
-    }
+        .grid .card:hover {
+            transform: translateY(-2px);
+            border-color: #cbd5e1;
+            box-shadow: 0 9px 25px rgba(15, 23, 42, 0.07);
+        }
 
-    main{
-        padding:30px 0 50px;
-    }
+        .tip-heading {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 11px;
+        }
 
-    .card{
-        padding:18px;
-    }
-}
-</style>
+        .tip-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            border-radius: 7px;
+            background: #eff6ff;
+            border: 1px solid #dbeafe;
+            color: #123b66;
+            flex-shrink: 0;
+        }
+
+        .tip-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .card h3 {
+            color: #0b1f3a;
+            margin: 0;
+            font-size: 17px;
+            line-height: 1.35;
+        }
+
+        .card p {
+            color: #64748b;
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           QUICK CHECKLIST
+        ========================= */
+
+        .checklist {
+            margin-top: 25px;
+        }
+
+        .checklist-heading {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .checklist-heading svg {
+            width: 22px;
+            height: 22px;
+            color: #123b66;
+        }
+
+        .checklist h2 {
+            color: #0b1f3a;
+            margin: 0;
+            font-size: 21px;
+        }
+
+        .checklist ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .checklist li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: #475569;
+            font-size: 14px;
+            margin-bottom: 11px;
+            padding: 11px 13px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 7px;
+        }
+
+        .checklist li:last-child {
+            margin-bottom: 0;
+        }
+
+        .check-icon {
+            color: #2563eb;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .check-icon svg {
+            width: 17px;
+            height: 17px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #0b1f3a;
+            color: #cbd5e1;
+            padding: 25px 0;
+            text-align: center;
+        }
+
+        footer .wrap {
+            font-size: 13px;
+        }
+
+        footer span {
+            display: inline-block;
+            margin-top: 5px;
+            color: #94a3b8;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            header {
+                padding: 16px 0;
+            }
+
+            .nav {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .brand {
+                justify-content: center;
+                margin-bottom: 5px;
+            }
+
+            .links {
+                justify-content: center;
+            }
+
+            .links a {
+                font-size: 12px;
+                padding: 7px 8px;
+            }
+
+            main {
+                padding: 32px 0 48px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .intro {
+                font-size: 14px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
+
+<!-- =========================
+     HEADER
+========================= -->
+
 <header>
+
     <div class="wrap nav">
 
         <a class="brand" href="/">
+
+            <i data-lucide="shield-check"></i>
+
             CyberShield Analyzer
+
         </a>
 
+
         <nav class="links">
-            <a href="/">URL Analyzer</a>
-            <a href="/qr-scanner">QR Scanner</a>
-            <a href="/message-detector">Message Detector</a>
-            <a href="/safety-tips">Safety Tips</a>
-            <a href="/quiz">Quiz</a>
-            <a href="/features">Features</a>
-            <a href="/history">History</a>
+
+            <a href="/">
+                <i data-lucide="link"></i>
+                URL Analyzer
+            </a>
+
+            <a href="/qr-scanner">
+                <i data-lucide="qr-code"></i>
+                QR Scanner
+            </a>
+
+            <a href="/message-detector">
+                <i data-lucide="message-square"></i>
+                Message Detector
+            </a>
+
+            <a href="/safety-tips">
+                <i data-lucide="shield"></i>
+                Safety Tips
+            </a>
+
+            <a href="/quiz">
+                <i data-lucide="clipboard-check"></i>
+                Quiz
+            </a>
+
+            <a href="/features">
+                <i data-lucide="layout-grid"></i>
+                Features
+            </a>
+
+            <a href="/history">
+                <i data-lucide="history"></i>
+                History
+            </a>
+
         </nav>
 
     </div>
+
 </header>
 
 
+
+<!-- =========================
+     MAIN
+========================= -->
+
 <main class="wrap">
 
-    <div class="eyebrow">STAY PROTECTED</div>
 
-    <h1>Everyday cyber-safety tips</h1>
+    <div class="eyebrow">
 
-    <p>
-        Use these checks before clicking links, scanning QR codes,
-        sending money, or sharing personal information.
+        <i data-lucide="shield-alert"></i>
+
+        STAY PROTECTED
+
+    </div>
+
+
+    <h1>
+        Everyday Cyber-Safety Tips
+    </h1>
+
+
+    <p class="intro">
+
+        Use these practical checks before clicking links,
+        scanning QR codes, sending money, or sharing
+        personal information.
+
     </p>
 
 
+
+    <!-- =========================
+         TIPS GRID
+    ========================= -->
+
     <section class="grid">
 
+
         <article class="card">
-            <h3>1. Check the full web address</h3>
+
+            <div class="tip-heading">
+
+                <span class="tip-icon">
+                    <i data-lucide="link"></i>
+                </span>
+
+                <h3>
+                    1. Check the Full Web Address
+                </h3>
+
+            </div>
+
             <p>
-                Look for misspellings, extra words, unusual subdomains,
-                and domains imitating trusted organizations.
-                HTTPS alone does not prove legitimacy.
+                Look for misspellings, extra words, unusual
+                subdomains, and domains imitating trusted
+                organizations. HTTPS alone does not prove legitimacy.
             </p>
+
         </article>
 
 
+
         <article class="card">
-            <h3>2. Never share OTPs or passwords</h3>
+
+            <div class="tip-heading">
+
+                <span class="tip-icon">
+                    <i data-lucide="key-round"></i>
+                </span>
+
+                <h3>
+                    2. Never Share OTPs or Passwords
+                </h3>
+
+            </div>
+
             <p>
-                Do not disclose your password, PIN, CVV, or one-time
-                verification code to someone contacting you unexpectedly.
+                Do not disclose your password, PIN, CVV, or
+                one-time verification code to someone contacting
+                you unexpectedly.
             </p>
+
         </article>
 
 
+
         <article class="card">
-            <h3>3. Verify unexpected requests</h3>
+
+            <div class="tip-heading">
+
+                <span class="tip-icon">
+                    <i data-lucide="badge-check"></i>
+                </span>
+
+                <h3>
+                    3. Verify Unexpected Requests
+                </h3>
+
+            </div>
+
             <p>
                 Contact the organization using its official app,
                 website, or phone number rather than using details
-                in a suspicious message.
+                provided in a suspicious message.
             </p>
+
         </article>
 
 
+
         <article class="card">
-            <h3>4. Be careful with QR codes</h3>
+
+            <div class="tip-heading">
+
+                <span class="tip-icon">
+                    <i data-lucide="qr-code"></i>
+                </span>
+
+                <h3>
+                    4. Be Careful with QR Codes
+                </h3>
+
+            </div>
+
             <p>
-                Preview the destination and verify unexpected payment
-                requests before proceeding.
+                Preview the destination and verify unexpected
+                payment requests before proceeding.
             </p>
+
         </article>
 
 
+
         <article class="card">
-            <h3>5. Watch for pressure tactics</h3>
+
+            <div class="tip-heading">
+
+                <span class="tip-icon">
+                    <i data-lucide="clock-alert"></i>
+                </span>
+
+                <h3>
+                    5. Watch for Pressure Tactics
+                </h3>
+
+            </div>
+
             <p>
                 Pause when a message threatens account closure,
                 demands immediate action, or promises guaranteed returns.
             </p>
+
         </article>
 
 
+
         <article class="card">
-            <h3>6. Keep devices updated</h3>
+
+            <div class="tip-heading">
+
+                <span class="tip-icon">
+                    <i data-lucide="refresh-cw"></i>
+                </span>
+
+                <h3>
+                    6. Keep Devices Updated
+                </h3>
+
+            </div>
+
             <p>
                 Update your browser and operating system.
                 Use unique passwords and multi-factor authentication
                 where available.
             </p>
+
         </article>
 
 
+
         <article class="card">
-            <h3>7. Report suspicious activity</h3>
+
+            <div class="tip-heading">
+
+                <span class="tip-icon">
+                    <i data-lucide="flag"></i>
+                </span>
+
+                <h3>
+                    7. Report Suspicious Activity
+                </h3>
+
+            </div>
+
             <p>
                 Keep relevant evidence and report suspected fraud
                 to the platform, bank, or appropriate official service.
             </p>
+
         </article>
 
 
+
         <article class="card">
-            <h3>8. Remember tool limitations</h3>
+
+            <div class="tip-heading">
+
+                <span class="tip-icon">
+                    <i data-lucide="triangle-alert"></i>
+                </span>
+
+                <h3>
+                    8. Remember Tool Limitations
+                </h3>
+
+            </div>
+
             <p>
                 Automated tools can produce false positives and false
                 negatives. “Likely Safe” is not a guarantee.
             </p>
+
         </article>
 
+
     </section>
 
 
-    <section class="card">
 
-        <h2>Quick checklist</h2>
+    <!-- =========================
+         QUICK CHECKLIST
+    ========================= -->
+
+    <section class="card checklist">
+
+
+        <div class="checklist-heading">
+
+            <i data-lucide="list-checks"></i>
+
+            <h2>
+                Quick Checklist
+            </h2>
+
+        </div>
+
 
         <ul>
-            <li>Did I expect this message?</li>
 
             <li>
-                Does the sender address match the official domain?
+
+                <span class="check-icon">
+                    <i data-lucide="check"></i>
+                </span>
+
+                <span>
+                    Did I expect this message?
+                </span>
+
             </li>
 
-            <li>
-                Is it asking for money, OTPs, passwords, or personal data?
-            </li>
 
             <li>
-                Can I verify through an official channel?
+
+                <span class="check-icon">
+                    <i data-lucide="check"></i>
+                </span>
+
+                <span>
+                    Does the sender address match the official domain?
+                </span>
+
             </li>
+
+
+            <li>
+
+                <span class="check-icon">
+                    <i data-lucide="check"></i>
+                </span>
+
+                <span>
+                    Is it asking for money, OTPs, passwords,
+                    or personal data?
+                </span>
+
+            </li>
+
+
+            <li>
+
+                <span class="check-icon">
+                    <i data-lucide="check"></i>
+                </span>
+
+                <span>
+                    Can I verify through an official channel?
+                </span>
+
+            </li>
+
         </ul>
 
+
     </section>
+
 
 </main>
 
 
+
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
+
     <div class="wrap">
-        AI-Based Phishing Detection &amp; Cyber Safety Analyzer
-        · Automated results are estimates, not guarantees.
+
+        AI-Based Phishing Detection &amp;
+        Cyber Safety Analyzer
+
+        <br>
+
+        <span>
+            Automated results are estimates, not guarantees.
+        </span>
+
     </div>
+
 </footer>
 
+
+
+<script>
+
+    lucide.createIcons();
+
+</script>
+
+
 </body>
+
 </html>
