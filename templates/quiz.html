@@ -8,6 +8,8 @@
 
     <title>Cyber Safety Quiz | PhishingDetector</title>
 
+    <script src="https://unpkg.com/lucide@latest"></script>
+
     <style>
 
         * {
@@ -15,33 +17,20 @@
         }
 
         html {
-            scroll-behavior: auto;
+            scroll-behavior: smooth;
         }
 
         body {
             margin: 0;
-
-            font-family:
-                "Segoe UI",
-                Arial,
-                sans-serif;
-
+            font-family: "Segoe UI", Arial, sans-serif;
             line-height: 1.6;
+            background: #f5f8fc;
+            color: #172033;
+        }
 
-            background:
-                radial-gradient(
-                    circle at top left,
-                    rgba(255, 157, 204, 0.30),
-                    transparent 34%
-                ),
-                radial-gradient(
-                    circle at bottom right,
-                    rgba(246, 107, 171, 0.18),
-                    transparent 36%
-                ),
-                #fff6fa;
-
-            color: #54283f;
+        .wrap {
+            width: min(1100px, 92%);
+            margin: auto;
         }
 
 
@@ -50,111 +39,73 @@
         ========================= */
 
         header {
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #ff9dcc,
-                    #f66bab,
-                    #df4289
-                );
-
-            padding: 20px 0;
-
-            border-bottom:
-                1px solid rgba(194, 45, 114, 0.18);
-
-            box-shadow:
-                0 8px 30px rgba(210, 56, 121, 0.20);
+            background: #0b1f3a;
+            color: white;
+            padding: 18px 0;
+            border-bottom: 1px solid #102b4d;
+            box-shadow: 0 4px 18px rgba(15, 23, 42, 0.12);
         }
-
-
-        .wrap {
-
-            width: min(1050px, 92%);
-
-            margin: auto;
-        }
-
-
-        /* =========================
-           NAVIGATION
-        ========================= */
 
         .nav {
-
             display: flex;
-
-            gap: 15px;
-
             align-items: center;
-
-            justify-content: space-between;
-
-            flex-wrap: wrap;
+            justify-content: center;
+            flex-direction: column;
+            gap: 13px;
         }
-
 
         .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+
+            color: white;
+            text-decoration: none;
 
             font-size: 19px;
-
-            font-weight: 800;
-
-            color: white;
-
-            text-decoration: none;
-
-            text-shadow:
-                0 2px 8px rgba(120, 20, 70, 0.20);
+            font-weight: 700;
         }
 
+        .brand svg {
+            width: 21px;
+            height: 21px;
+        }
 
         .links {
-
             display: flex;
-
-            gap: 8px;
-
-            flex-wrap: wrap;
-
             justify-content: center;
-        }
+            align-items: center;
 
+            gap: 4px;
+            flex-wrap: wrap;
+        }
 
         .links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
 
-            color: white;
-
+            color: #dbe7f3;
             text-decoration: none;
 
-            border:
-                1px solid rgba(255, 255, 255, 0.38);
+            padding: 8px 10px;
 
-            border-radius: 10px;
+            border-radius: 6px;
 
-            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 500;
 
-            background:
-                rgba(255, 255, 255, 0.15);
-
-            font-size: 14px;
-
-            font-weight: 600;
-
-            transition: 0.25s;
+            transition: 0.2s ease;
         }
 
+        .links a svg {
+            width: 15px;
+            height: 15px;
+        }
 
         .links a:hover {
-
-            background:
-                rgba(255, 255, 255, 0.30);
-
-            transform: translateY(-2px);
-
-            box-shadow:
-                0 6px 18px rgba(150, 35, 90, 0.18);
+            background: #123b66;
+            color: white;
         }
 
 
@@ -163,75 +114,165 @@
         ========================= */
 
         main {
-
-            padding:
-                48px 0 70px;
-        }
-
-
-        .eyebrow {
-
-            color: #d23879;
-
-            font-size: 0.85rem;
-
-            font-weight: 800;
-
-            letter-spacing: 2px;
-
-            margin-bottom: 8px;
-        }
-
-
-        h1 {
-
-            font-size:
-                clamp(2rem, 4vw, 3.1rem);
-
-            line-height: 1.15;
-
-            margin: 5px 0 12px;
-
-            color: #6f2349;
-        }
-
-
-        main > .wrap > p {
-
-            color: #80566c;
-
-            font-size: 16px;
-
-            max-width: 850px;
-
-            margin-bottom: 25px;
+            padding: 38px 0 70px;
         }
 
 
         /* =========================
-           CARD
+           BLUE HERO
+        ========================= */
+
+        .page-hero {
+            background: #123b66;
+            color: white;
+
+            border-radius: 14px;
+
+            padding: 38px 40px;
+
+            margin-bottom: 28px;
+
+            box-shadow:
+                0 10px 28px rgba(15, 23, 42, 0.10);
+        }
+
+        .hero-inner {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .hero-icon {
+            width: 64px;
+            height: 64px;
+            min-width: 64px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: rgba(255, 255, 255, 0.12);
+
+            border: 1px solid rgba(255, 255, 255, 0.18);
+
+            border-radius: 14px;
+        }
+
+        .hero-icon svg {
+            width: 34px;
+            height: 34px;
+            stroke-width: 1.8;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-label {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+
+            color: #bfdbfe;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            letter-spacing: 1.5px;
+
+            margin-bottom: 7px;
+        }
+
+        .hero-label svg {
+            width: 15px;
+            height: 15px;
+        }
+
+        .hero-content h1 {
+            margin: 0 0 10px;
+
+            color: white;
+
+            font-size: clamp(2rem, 4vw, 2.8rem);
+
+            line-height: 1.15;
+
+            font-weight: 750;
+
+            letter-spacing: -0.5px;
+        }
+
+        .hero-content p {
+            margin: 0;
+
+            max-width: 760px;
+
+            color: #dbeafe;
+
+            font-size: 15px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           QUIZ CARD
         ========================= */
 
         .card {
+            background: white;
 
-            background:
-                linear-gradient(
-                    145deg,
-                    #ffffff,
-                    #fff8fc
-                );
+            border: 1px solid #e2e8f0;
 
-            border:
-                1px solid #efc5d9;
+            border-radius: 12px;
 
-            border-radius: 20px;
-
-            padding: 30px;
-
-            margin-top: 25px;
+            padding: 32px;
 
             box-shadow:
-                0 14px 40px rgba(185, 61, 117, 0.12);
+                0 8px 28px rgba(15, 23, 42, 0.06);
+        }
+
+
+        /* =========================
+           QUIZ INTRO
+        ========================= */
+
+        .card-heading {
+            display: flex;
+            align-items: flex-start;
+
+            gap: 12px;
+
+            margin-bottom: 25px;
+        }
+
+        .card-heading-icon {
+            width: 28px;
+            height: 28px;
+
+            color: #123b66;
+
+            flex-shrink: 0;
+
+            margin-top: 2px;
+        }
+
+        .card-heading h2 {
+            color: #0b1f3a;
+
+            margin: 0;
+
+            font-size: 22px;
+
+            font-weight: 700;
+        }
+
+        .card-heading p {
+            margin: 4px 0 0;
+
+            color: #64748b;
+
+            font-size: 14px;
         }
 
 
@@ -240,82 +281,70 @@
         ========================= */
 
         .quiz-question {
+            border-bottom: 1px solid #e2e8f0;
 
-            border-bottom:
-                1px solid #efc5d9;
-
-            padding:
-                18px 4px;
+            padding: 20px 4px;
 
             margin-bottom: 5px;
         }
 
-
         .quiz-question:last-of-type {
-
             border-bottom: none;
         }
 
-
         .quiz-question p {
+            color: #0b1f3a;
 
-            color: #642d49;
-
-            font-size: 17px;
+            font-size: 16px;
 
             font-weight: 700;
 
-            margin:
-                0 0 14px;
+            margin: 0 0 14px;
         }
 
+
+        /* =========================
+           OPTIONS
+        ========================= */
 
         .quiz-question label {
+            display: flex;
+            align-items: flex-start;
+            gap: 9px;
 
-            display: block;
+            margin: 10px 0;
 
-            margin:
-                10px 0;
+            padding: 12px 14px;
 
-            padding:
-                11px 13px;
+            border: 1px solid #e2e8f0;
 
-            border:
-                1px solid #f0cede;
+            border-radius: 8px;
 
-            border-radius: 10px;
+            background: #f8fafc;
 
-            background:
-                #fffafd;
-
-            color: #70465b;
+            color: #475569;
 
             cursor: pointer;
 
-            transition: 0.22s;
+            transition: 0.2s ease;
         }
-
 
         .quiz-question label:hover {
+            background: #f1f6fc;
 
-            background:
-                #fff0f7;
+            border-color: #bfdbfe;
 
-            border-color:
-                #eaa5c4;
-
-            transform:
-                translateX(2px);
+            transform: translateX(2px);
         }
 
-
         .quiz-question input[type="radio"] {
+            accent-color: #2563eb;
 
-            accent-color: #d23879;
-
-            margin-right: 8px;
+            margin: 3px 0 0;
 
             cursor: pointer;
+
+            flex-shrink: 0;
         }
 
 
@@ -323,93 +352,89 @@
            BUTTONS
         ========================= */
 
-        .primary {
+        .button-row {
+            display: flex;
+            align-items: center;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #f45a9e,
-                    #d23879
-                );
+            gap: 12px;
+
+            margin-top: 20px;
+        }
+
+        .primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 8px;
+
+            background: #123b66;
 
             color: white;
 
             border: none;
 
-            border-radius: 11px;
+            border-radius: 7px;
 
-            padding:
-                13px 20px;
+            padding: 13px 20px;
 
-            font-weight: 800;
+            font-weight: 600;
 
             font-size: 15px;
 
-            margin-top: 20px;
-
             cursor: pointer;
 
-            transition: 0.25s;
-
-            box-shadow:
-                0 8px 22px rgba(210, 56, 121, 0.25);
+            transition: 0.2s ease;
         }
 
+        .primary svg {
+            width: 17px;
+            height: 17px;
+        }
 
         .primary:hover {
+            background: #0b2d4d;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #f76eaa,
-                    #df4289
-                );
-
-            transform:
-                translateY(-2px);
-
-            box-shadow:
-                0 11px 28px rgba(210, 56, 121, 0.32);
+            transform: translateY(-1px);
         }
 
-
         .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
 
-            color: #8d3159;
+            gap: 8px;
+
+            color: #123b66;
 
             text-decoration: none;
 
-            border:
-                1px solid #e9bfd2;
+            border: 1px solid #cbd5e1;
 
-            border-radius: 11px;
+            border-radius: 7px;
 
-            padding:
-                12px 17px;
+            padding: 12px 17px;
 
-            background:
-                #fff4f9;
+            background: white;
 
-            font-weight: 700;
+            font-weight: 600;
 
             cursor: pointer;
 
-            margin-top: 20px;
-
-            transition: 0.25s;
+            transition: 0.2s ease;
         }
 
+        .btn svg {
+            width: 16px;
+            height: 16px;
+        }
 
         .btn:hover {
+            background: #f8fafc;
 
-            background:
-                #ffe8f2;
+            border-color: #94a3b8;
 
-            border-color:
-                #df9fbd;
-
-            transform:
-                translateY(-2px);
+            transform: translateY(-1px);
         }
 
 
@@ -418,63 +443,78 @@
         ========================= */
 
         .result {
-
             padding: 22px;
 
-            border-radius: 15px;
+            border-radius: 10px;
 
-            margin-top: 25px;
+            margin-top: 28px;
 
             overflow-wrap: anywhere;
 
-            background:
-                linear-gradient(
-                    145deg,
-                    #fffaff,
-                    #fff4fa
-                );
+            background: #f8fafc;
 
-            border:
-                1px solid #efc5d9;
+            border: 1px solid #dbe3ec;
 
-            border-left:
-                5px solid #e04b91;
+            border-left: 4px solid #2563eb;
 
             box-shadow:
-                0 8px 25px rgba(185, 61, 117, 0.10);
+                0 6px 20px rgba(15, 23, 42, 0.05);
         }
-
 
         .result h2 {
+            display: flex;
+            align-items: center;
+            gap: 9px;
 
-            color: #c42d72;
+            color: #0b1f3a;
 
-            margin-top: 0;
+            margin: 0 0 15px;
 
-            margin-bottom: 15px;
+            font-size: 20px;
         }
 
+        .result h2 svg {
+            width: 21px;
+            height: 21px;
+
+            color: #2563eb;
+        }
 
         .result ul {
+            margin: 12px 0 0;
 
-            margin:
-                12px 0 0;
+            padding-left: 0;
 
-            padding-left: 22px;
+            list-style: none;
         }
-
 
         .result li {
+            display: flex;
+            align-items: flex-start;
 
-            color: #70465b;
+            gap: 8px;
+
+            color: #475569;
 
             margin-bottom: 10px;
+
+            font-size: 14px;
         }
 
+        .result li::before {
+            content: "•";
+
+            color: #2563eb;
+
+            font-size: 18px;
+
+            line-height: 18px;
+
+            font-weight: 700;
+        }
 
         .result b {
-
-            color: #5b2841;
+            color: #334155;
         }
 
 
@@ -483,30 +523,25 @@
         ========================= */
 
         footer {
+            background: #0b1f3a;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #ffe3ef,
-                    #ffd3e5
-                );
-
-            color: #71364f;
+            color: #cbd5e1;
 
             padding: 25px 0;
-
-            border-top:
-                1px solid #efbfd5;
 
             text-align: center;
         }
 
-
         footer .wrap {
+            font-size: 13px;
+        }
 
-            color: #89556d;
+        footer span {
+            display: inline-block;
 
-            font-size: 14px;
+            margin-top: 5px;
+
+            color: #94a3b8;
         }
 
 
@@ -517,78 +552,62 @@
         @media (max-width: 700px) {
 
             header {
-
-                padding:
-                    18px 0;
+                padding: 16px 0;
             }
 
+            .links a {
+                font-size: 12px;
 
-            .nav {
+                padding: 7px 8px;
+            }
 
+            main {
+                padding: 25px 0 50px;
+            }
+
+            .page-hero {
+                padding: 28px 23px;
+
+                border-radius: 12px;
+            }
+
+            .hero-inner {
+                gap: 14px;
+            }
+
+            .hero-icon {
+                width: 52px;
+                height: 52px;
+
+                min-width: 52px;
+            }
+
+            .hero-icon svg {
+                width: 28px;
+                height: 28px;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 14px;
+            }
+
+            .card {
+                padding: 21px;
+            }
+
+            .button-row {
                 flex-direction: column;
 
                 align-items: stretch;
             }
 
-
-            .brand {
-
-                text-align: center;
-
-                margin-bottom: 5px;
-            }
-
-
-            .links {
-
-                justify-content: center;
-            }
-
-
-            .links a {
-
-                font-size: 13px;
-
-                padding:
-                    8px 10px;
-            }
-
-
-            main {
-
-                padding:
-                    30px 0 45px;
-            }
-
-
-            h1 {
-
-                font-size: 2rem;
-            }
-
-
-            .card {
-
-                padding: 22px;
-
-                border-radius: 16px;
-            }
-
-
             .primary,
             .btn {
-
                 width: 100%;
-
-                display: block;
-            }
-
-
-            .btn {
-
-                text-align: center;
-
-                margin-left: 0;
             }
 
         }
@@ -613,38 +632,49 @@
             class="brand"
             href="/"
         >
-            🛡️ CyberShield Analyzer
+
+            <i data-lucide="shield-check"></i>
+
+            CyberShield Analyzer
+
         </a>
 
 
         <nav class="links">
 
             <a href="/">
-                🌐 URL Analyzer
+                <i data-lucide="link"></i>
+                URL Analyzer
             </a>
 
             <a href="/qr-scanner">
-                📷 QR Scanner
+                <i data-lucide="qr-code"></i>
+                QR Scanner
             </a>
 
             <a href="/message-detector">
-                💬 Message Detector
+                <i data-lucide="message-square"></i>
+                Message Detector
             </a>
 
             <a href="/safety-tips">
-                🛡️ Safety Tips
+                <i data-lucide="shield"></i>
+                Safety Tips
             </a>
 
             <a href="/quiz">
-                🧠 Quiz
+                <i data-lucide="clipboard-check"></i>
+                Quiz
             </a>
 
             <a href="/features">
-                📋 Features
+                <i data-lucide="layout-grid"></i>
+                Features
             </a>
 
             <a href="/history">
-                📜 History
+                <i data-lucide="history"></i>
+                History
             </a>
 
         </nav>
@@ -661,20 +691,49 @@
 
 <main class="wrap">
 
-    <div class="eyebrow">
-        KNOWLEDGE CHECK
-    </div>
+
+    <!-- =========================
+         BLUE HERO
+    ========================= -->
+
+    <section class="page-hero">
+
+        <div class="hero-inner">
+
+            <div class="hero-icon">
+
+                <i data-lucide="clipboard-check"></i>
+
+            </div>
 
 
-    <h1>
-        🧠 Cyber-safety awareness quiz
-    </h1>
+            <div class="hero-content">
+
+                <div class="hero-label">
+
+                    <i data-lucide="shield-check"></i>
+
+                    KNOWLEDGE CHECK
+
+                </div>
 
 
-    <p>
-        Choose an answer for each scenario,
-        then check your score and explanations.
-    </p>
+                <h1>
+                    Cyber-Safety Awareness Quiz
+                </h1>
+
+
+                <p>
+                    Test your knowledge of phishing, suspicious messages,
+                    QR-code safety and common cyber-security threats.
+                    Choose the best answer for each scenario and check your score.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
 
 
 
@@ -684,10 +743,36 @@
 
     <section class="card">
 
+
+        <div class="card-heading">
+
+            <i
+                data-lucide="brain"
+                class="card-heading-icon"
+            ></i>
+
+            <div>
+
+                <h2>
+                    Test Your Cyber-Safety Knowledge
+                </h2>
+
+                <p>
+                    Choose one answer for each question, then check your score.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
         <form id="quizForm">
 
 
-            <!-- QUESTION 1 -->
+            <!-- =========================
+                 QUESTION 1
+            ========================= -->
 
             <div class="quiz-question">
 
@@ -698,40 +783,51 @@
 
 
                 <label>
+
                     <input
                         type="radio"
                         name="q1"
                         value="a"
                         required
                     >
+
                     Share it immediately
+
                 </label>
 
 
                 <label>
+
                     <input
                         type="radio"
                         name="q1"
                         value="b"
                     >
+
                     Do not share it; verify through official channels
+
                 </label>
 
 
                 <label>
+
                     <input
                         type="radio"
                         name="q1"
                         value="c"
                     >
+
                     Forward it to friends
+
                 </label>
 
             </div>
 
 
 
-            <!-- QUESTION 2 -->
+            <!-- =========================
+                 QUESTION 2
+            ========================= -->
 
             <div class="quiz-question">
 
@@ -742,41 +838,52 @@
 
 
                 <label>
+
                     <input
                         type="radio"
                         name="q2"
                         value="a"
                         required
                     >
+
                     Yes, always
+
                 </label>
 
 
                 <label>
+
                     <input
                         type="radio"
                         name="q2"
                         value="b"
                     >
+
                     No; it encrypts the connection but
                     doesn't prove trustworthiness
+
                 </label>
 
 
                 <label>
+
                     <input
                         type="radio"
                         name="q2"
                         value="c"
                     >
+
                     Only on phones
+
                 </label>
 
             </div>
 
 
 
-            <!-- QUESTION 3 -->
+            <!-- =========================
+                 QUESTION 3
+            ========================= -->
 
             <div class="quiz-question">
 
@@ -787,40 +894,51 @@
 
 
                 <label>
+
                     <input
                         type="radio"
                         name="q3"
                         value="a"
                         required
                     >
+
                     Pay quickly
+
                 </label>
 
 
                 <label>
+
                     <input
                         type="radio"
                         name="q3"
                         value="b"
                     >
+
                     Verify the request and destination independently
+
                 </label>
 
 
                 <label>
+
                     <input
                         type="radio"
                         name="q3"
                         value="c"
                     >
+
                     Assume all QR codes are safe
+
                 </label>
 
             </div>
 
 
 
-            <!-- QUESTION 4 -->
+            <!-- =========================
+                 QUESTION 4
+            ========================= -->
 
             <div class="quiz-question">
 
@@ -831,56 +949,79 @@
 
 
                 <label>
+
                     <input
                         type="radio"
                         name="q4"
                         value="a"
                         required
                     >
+
                     Provide bank details
+
                 </label>
 
 
                 <label>
+
                     <input
                         type="radio"
                         name="q4"
                         value="b"
                     >
+
                     Click every link
+
                 </label>
 
 
                 <label>
+
                     <input
                         type="radio"
                         name="q4"
                         value="c"
                     >
+
                     Verify through an official source
+
                 </label>
 
             </div>
 
 
 
-            <!-- BUTTONS -->
+            <!-- =========================
+                 BUTTONS
+            ========================= -->
 
-            <button
-                class="primary"
-                type="submit"
-            >
-                ✅ Check Answers
-            </button>
+            <div class="button-row">
+
+                <button
+                    class="primary"
+                    type="submit"
+                >
+
+                    <i data-lucide="check-circle"></i>
+
+                    Check Answers
+
+                </button>
 
 
-            <button
-                class="btn"
-                type="reset"
-                id="resetQuiz"
-            >
-                🔄 Try Again
-            </button>
+                <button
+                    class="btn"
+                    type="reset"
+                    id="resetQuiz"
+                >
+
+                    <i data-lucide="rotate-ccw"></i>
+
+                    Try Again
+
+                </button>
+
+            </div>
 
         </form>
 
@@ -897,6 +1038,7 @@
             aria-live="polite"
         ></div>
 
+
     </section>
 
 </main>
@@ -911,7 +1053,7 @@
 
     <div class="wrap">
 
-        🛡️ AI-Based Phishing Detection &amp;
+        AI-Based Phishing Detection &amp;
         Cyber Safety Analyzer
 
         <br>
@@ -1013,13 +1155,20 @@
 
 
             out.innerHTML =
-                "<h2>Your score: " +
+                "<h2>" +
+
+                '<i data-lucide="award"></i>' +
+
+                "Your score: " +
                 score +
                 " / 4</h2>" +
 
                 "<ul>" +
                 items.join("") +
                 "</ul>";
+
+
+            lucide.createIcons();
 
         }
     );
@@ -1037,6 +1186,9 @@
 
             }
         );
+
+
+    lucide.createIcons();
 
 </script>
 
