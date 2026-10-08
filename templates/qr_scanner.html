@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>QR Code Scanner | Cyber Safety Analyzer</title>
+    <title>QR Code Scanner | PhishingDetector</title>
 
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
+
         * {
             box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -21,164 +28,222 @@
             line-height: 1.6;
         }
 
-        /* ================= HEADER ================= */
+        .wrap {
+            width: min(1100px, 92%);
+            margin: auto;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
 
         header {
             background: #0b1f3a;
-            padding: 18px 7%;
+            color: white;
+            padding: 18px 0;
+            border-bottom: 1px solid #102b4d;
+            box-shadow: 0 4px 18px rgba(15, 23, 42, 0.12);
+        }
+
+        .nav {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 20px;
+            justify-content: center;
+            flex-direction: column;
+            gap: 13px;
         }
 
         .brand {
-            color: #ffffff;
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            color: white;
             text-decoration: none;
-            font-size: 20px;
+            font-size: 19px;
             font-weight: 700;
-            letter-spacing: -0.3px;
         }
 
-        nav {
+        .brand svg {
+            width: 21px;
+            height: 21px;
+        }
+
+        .links {
             display: flex;
+            justify-content: center;
             align-items: center;
-            gap: 24px;
+            gap: 4px;
             flex-wrap: wrap;
         }
 
-        nav a {
-            display: flex;
+        .links a {
+            display: inline-flex;
             align-items: center;
-            gap: 7px;
-
-            color: #dbe7f5;
+            gap: 6px;
+            color: #dbe7f3;
             text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-
+            padding: 8px 10px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
             transition: 0.2s ease;
         }
 
-        nav a:hover {
-            color: #ffffff;
+        .links a svg {
+            width: 15px;
+            height: 15px;
         }
 
-        nav svg {
-            width: 16px;
-            height: 16px;
+        .links a:hover {
+            background: #123b66;
+            color: white;
         }
 
-
-        /* ================= MAIN ================= */
+        /* =========================
+           MAIN
+        ========================= */
 
         main {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 65px 20px 80px;
+            padding: 38px 0 70px;
         }
 
-        .page-heading {
-            text-align: center;
-            margin-bottom: 35px;
+        /* =========================
+           BLUE HERO
+        ========================= */
+
+        .page-hero {
+            background: #123b66;
+            color: white;
+            border-radius: 14px;
+            padding: 38px 40px;
+            margin-bottom: 28px;
+            box-shadow: 0 10px 28px rgba(15, 23, 42, 0.10);
         }
 
-        .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-
-            color: #2563eb;
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 1.4px;
-
-            margin-bottom: 12px;
-        }
-
-        .eyebrow svg {
-            width: 17px;
-            height: 17px;
-        }
-
-        h1 {
-            margin: 0;
-            color: #0b1f3a;
-
-            font-size: clamp(32px, 5vw, 46px);
-            line-height: 1.15;
-            letter-spacing: -1px;
-        }
-
-        .intro {
-            max-width: 620px;
-            margin: 15px auto 0;
-
-            color: #64748b;
-            font-size: 16px;
-        }
-
-
-        /* ================= SCANNER CARD ================= */
-
-        .scanner-card {
-            background: #ffffff;
-            border: 1px solid #dce5ef;
-            border-radius: 18px;
-
-            padding: 36px;
-
-            box-shadow:
-                0 10px 30px rgba(11, 31, 58, 0.07);
-        }
-
-        .card-heading {
+        .hero-inner {
             display: flex;
-            align-items: center;
-            gap: 14px;
-
-            margin-bottom: 25px;
+            align-items: flex-start;
+            gap: 20px;
         }
 
-        .card-icon {
-            width: 48px;
-            height: 48px;
+        .hero-icon {
+            width: 64px;
+            height: 64px;
+            min-width: 64px;
 
             display: flex;
             align-items: center;
             justify-content: center;
 
-            background: #eff6ff;
-            color: #2563eb;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.18);
 
-            border-radius: 12px;
+            border-radius: 14px;
         }
 
-        .card-icon svg {
-            width: 24px;
-            height: 24px;
+        .hero-icon svg {
+            width: 34px;
+            height: 34px;
+            stroke-width: 1.8;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-label {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+
+            color: #bfdbfe;
+
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+
+            margin-bottom: 7px;
+        }
+
+        .hero-label svg {
+            width: 15px;
+            height: 15px;
+        }
+
+        .hero-content h1 {
+            margin: 0 0 10px;
+
+            color: white;
+
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            line-height: 1.15;
+
+            font-weight: 750;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-content p {
+            margin: 0;
+
+            max-width: 760px;
+
+            color: #dbeafe;
+
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           SCANNER CARD
+        ========================= */
+
+        .scanner-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 32px;
+
+            box-shadow: 0 8px 28px rgba(15, 23, 42, 0.06);
+        }
+
+        .card-heading {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .card-heading-icon {
+            width: 28px;
+            height: 28px;
+            color: #123b66;
+            flex-shrink: 0;
+            margin-top: 2px;
         }
 
         .card-heading h2 {
-            margin: 0;
             color: #0b1f3a;
-            font-size: 21px;
+            margin: 0;
+            font-size: 22px;
+            font-weight: 700;
         }
 
         .card-heading p {
-            margin: 3px 0 0;
+            margin: 4px 0 0;
             color: #64748b;
             font-size: 14px;
         }
 
-
-        /* ================= UPLOAD AREA ================= */
+        /* =========================
+           UPLOAD AREA
+        ========================= */
 
         .upload-area {
-            border: 2px dashed #cbd8e6;
-            border-radius: 14px;
+            border: 2px dashed #cbd5e1;
+            border-radius: 10px;
 
-            padding: 35px 20px;
+            padding: 38px 25px;
+
             text-align: center;
 
             background: #f8fafc;
@@ -187,8 +252,8 @@
         }
 
         .upload-area:hover {
-            border-color: #93b4dd;
-            background: #f3f7fc;
+            border-color: #2563eb;
+            background: #f5f9ff;
         }
 
         .upload-icon {
@@ -201,488 +266,819 @@
             align-items: center;
             justify-content: center;
 
+            border-radius: 12px;
+
             background: #eaf2ff;
             color: #2563eb;
-
-            border-radius: 50%;
         }
 
         .upload-icon svg {
-            width: 25px;
-            height: 25px;
+            width: 27px;
+            height: 27px;
         }
 
         .upload-area h3 {
             margin: 0 0 6px;
-            color: #172033;
+
+            color: #0b1f3a;
+
             font-size: 17px;
+            font-weight: 700;
         }
 
         .upload-area p {
-            margin: 0 0 20px;
+            margin: 0;
+
             color: #64748b;
-            font-size: 14px;
+
+            font-size: 13px;
         }
 
         input[type="file"] {
-            display: none;
+            display: block;
+
+            width: 100%;
+
+            margin-top: 18px;
+
+            padding: 11px;
+
+            background: white;
+
+            border: 1px solid #cbd5e1;
+
+            border-radius: 7px;
+
+            color: #475569;
+
+            font-size: 13px;
         }
 
-        .file-label {
+        /* =========================
+           SCAN BUTTON
+        ========================= */
+
+        .scan-button {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            justify-content: center;
+            gap: 9px;
 
-            padding: 11px 18px;
+            background: #123b66;
+            color: white;
 
-            background: #ffffff;
-            border: 1px solid #cbd5e1;
-            border-radius: 9px;
+            border: none;
+            border-radius: 7px;
 
-            color: #1e3a5f;
-            font-size: 14px;
+            padding: 13px 22px;
+
+            margin-top: 20px;
+
+            font-size: 15px;
             font-weight: 600;
 
             cursor: pointer;
+
             transition: 0.2s ease;
         }
 
-        .file-label:hover {
-            border-color: #2563eb;
-            color: #2563eb;
-        }
-
-        .file-label svg {
+        .scan-button svg {
             width: 17px;
             height: 17px;
         }
 
-
-        /* ================= BUTTON ================= */
-
-        .scan-button {
-            width: 100%;
-
-            margin-top: 22px;
-            padding: 14px 20px;
-
-            border: none;
-            border-radius: 10px;
-
-            background: #2563eb;
-            color: #ffffff;
-
-            font-size: 15px;
-            font-weight: 700;
-
-            cursor: pointer;
-            transition: 0.2s ease;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
         .scan-button:hover {
-            background: #1d4ed8;
+            background: #0b2d4d;
             transform: translateY(-1px);
         }
 
-        .scan-button svg {
-            width: 18px;
-            height: 18px;
-        }
+        /* =========================
+           ERROR
+        ========================= */
 
+        .qr-error {
+            display: flex;
+            align-items: flex-start;
+            gap: 9px;
 
-        /* ================= ERROR / SUCCESS ================= */
-
-        .message {
             margin-top: 22px;
-            padding: 14px 16px;
 
-            border-radius: 10px;
+            padding: 15px 17px;
+
+            background: #fef2f2;
+
+            border: 1px solid #fecaca;
+            border-left: 4px solid #dc2626;
+
+            border-radius: 8px;
+
+            color: #991b1b;
+
             font-size: 14px;
         }
 
-        .error {
-            background: #fef2f2;
-            border: 1px solid #fecaca;
-            color: #991b1b;
+        .qr-error svg {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            margin-top: 2px;
         }
 
-        .success {
-            background: #f0fdf4;
-            border: 1px solid #bbf7d0;
-            color: #166534;
-        }
-
-
-        /* ================= RESULT ================= */
+        /* =========================
+           SUCCESS
+        ========================= */
 
         .result-card {
-            margin-top: 25px;
+            margin-top: 28px;
 
-            background: #ffffff;
-            border: 1px solid #dce5ef;
-            border-radius: 18px;
+            background: white;
 
-            padding: 30px;
+            border: 1px solid #dbe3ec;
 
-            box-shadow:
-                0 8px 25px rgba(11, 31, 58, 0.06);
+            border-radius: 10px;
+
+            overflow: hidden;
         }
 
         .result-header {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
 
-            margin-bottom: 20px;
+            padding: 19px 21px;
+
+            background: #f7f9fc;
+
+            border-bottom: 1px solid #e2e8f0;
         }
 
         .result-header svg {
-            color: #2563eb;
-            width: 22px;
-            height: 22px;
+            width: 21px;
+            height: 21px;
+            color: #123b66;
         }
 
         .result-header h2 {
             margin: 0;
+
             color: #0b1f3a;
-            font-size: 21px;
+
+            font-size: 19px;
         }
 
-        .result-url {
-            padding: 14px;
+        .result-body {
+            padding: 23px;
+        }
+
+        /* =========================
+           SCANNED URL
+        ========================= */
+
+        .url-box {
+            padding: 15px;
 
             background: #f8fafc;
+
             border: 1px solid #e2e8f0;
-            border-radius: 10px;
 
-            word-break: break-word;
+            border-radius: 8px;
 
-            color: #334155;
-            font-size: 14px;
+            overflow-wrap: anywhere;
         }
+
+        .url-label {
+            color: #64748b;
+
+            font-size: 12px;
+
+            margin-bottom: 5px;
+        }
+
+        .url-value {
+            color: #172033;
+
+            font-size: 14px;
+
+            font-weight: 600;
+        }
+
+        /* =========================
+           RISK
+        ========================= */
 
         .risk-section {
-            margin-top: 22px;
+            margin-top: 24px;
         }
 
-        .risk-label {
+        .risk-top {
             display: flex;
             justify-content: space-between;
             align-items: center;
 
             margin-bottom: 8px;
+        }
 
-            font-size: 14px;
+        .risk-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            color: #0b1f3a;
+
+            font-size: 15px;
             font-weight: 700;
-            color: #334155;
+        }
+
+        .risk-title svg {
+            width: 18px;
+            height: 18px;
+            color: #2563eb;
+        }
+
+        .risk-percentage {
+            color: #1d4ed8;
+
+            font-size: 17px;
+
+            font-weight: 700;
         }
 
         .risk-bar {
             width: 100%;
-            height: 10px;
+            height: 9px;
 
             background: #e2e8f0;
+
             border-radius: 20px;
+
             overflow: hidden;
         }
 
         .risk-fill {
             height: 100%;
+
+            width: {{ qr_risk_percentage or 0 }}%;
+
             background: #2563eb;
+
             border-radius: 20px;
         }
 
-        .features {
-            margin-top: 25px;
-        }
+        /* =========================
+           RESULT TEXT
+        ========================= */
 
-        .features h3 {
-            margin: 0 0 12px;
-            color: #0b1f3a;
-            font-size: 16px;
-        }
+        .result-text {
+            margin-top: 22px;
 
-        .features ul {
-            margin: 0;
-            padding-left: 20px;
+            padding: 16px;
+
+            background: #f8fafc;
+
+            border: 1px solid #e2e8f0;
+
+            border-radius: 8px;
+
             color: #475569;
+
             font-size: 14px;
         }
 
-        .features li {
-            margin-bottom: 7px;
+        .result-text strong {
+            color: #334155;
         }
 
+        /* =========================
+           FEATURES
+        ========================= */
 
-        /* ================= FOOTER ================= */
+        .features-section {
+            margin-top: 24px;
+        }
+
+        .features-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            color: #0b1f3a;
+
+            font-size: 15px;
+            font-weight: 700;
+
+            margin-bottom: 12px;
+        }
+
+        .features-title svg {
+            width: 18px;
+            height: 18px;
+            color: #2563eb;
+        }
+
+        .features-list {
+            list-style: none;
+
+            padding: 0;
+            margin: 0;
+        }
+
+        .features-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 9px;
+
+            padding: 9px 11px;
+
+            margin-bottom: 8px;
+
+            background: #f8fafc;
+
+            border: 1px solid #e2e8f0;
+
+            border-radius: 7px;
+
+            color: #475569;
+
+            font-size: 14px;
+        }
+
+        .features-list li::before {
+            content: "•";
+
+            color: #2563eb;
+
+            font-size: 18px;
+            line-height: 18px;
+
+            font-weight: 700;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
 
         footer {
             background: #0b1f3a;
-            color: #94a3b8;
+
+            color: #cbd5e1;
+
+            padding: 25px 0;
 
             text-align: center;
+        }
 
-            padding: 25px 20px;
-
+        footer .wrap {
             font-size: 13px;
         }
 
+        footer span {
+            display: inline-block;
 
-        /* ================= MOBILE ================= */
+            margin-top: 5px;
+
+            color: #94a3b8;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
 
         @media (max-width: 700px) {
 
             header {
-                padding: 16px 20px;
-                flex-direction: column;
-                align-items: flex-start;
+                padding: 16px 0;
             }
 
-            nav {
-                gap: 15px;
+            .links a {
+                font-size: 12px;
+                padding: 7px 8px;
             }
 
             main {
-                padding: 45px 16px 60px;
+                padding: 25px 0 50px;
             }
 
-            .scanner-card,
-            .result-card {
-                padding: 24px 18px;
+            .page-hero {
+                padding: 28px 23px;
+                border-radius: 12px;
             }
 
-            h1 {
-                font-size: 34px;
+            .hero-inner {
+                gap: 14px;
             }
 
-            .intro {
-                font-size: 15px;
+            .hero-icon {
+                width: 52px;
+                height: 52px;
+                min-width: 52px;
             }
+
+            .hero-icon svg {
+                width: 28px;
+                height: 28px;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 14px;
+            }
+
+            .scanner-card {
+                padding: 21px;
+            }
+
+            .scan-button {
+                width: 100%;
+            }
+
+            .result-body {
+                padding: 19px;
+            }
+
         }
+
     </style>
+
 </head>
+
 
 <body>
 
+
+<!-- =========================
+     HEADER
+========================= -->
+
 <header>
 
-    <a href="/" class="brand">
-        Cyber Safety Analyzer
-    </a>
+    <div class="wrap nav">
 
-    <nav>
-        <a href="/">
+        <a class="brand" href="/">
+
             <i data-lucide="shield-check"></i>
-            Home
+
+            CyberShield Analyzer
+
         </a>
 
-        <a href="/history">
-            <i data-lucide="history"></i>
-            History
-        </a>
 
-        <a href="/message-detector">
-            <i data-lucide="message-square"></i>
-            Message
-        </a>
+        <nav class="links">
 
-        <a href="/qr-scanner">
-            <i data-lucide="qr-code"></i>
-            QR Scanner
-        </a>
+            <a href="/">
+                <i data-lucide="link"></i>
+                URL Analyzer
+            </a>
 
-        <a href="/safety-tips">
-            <i data-lucide="shield"></i>
-            Safety Tips
-        </a>
-    </nav>
+            <a href="/qr-scanner">
+                <i data-lucide="qr-code"></i>
+                QR Scanner
+            </a>
+
+            <a href="/message-detector">
+                <i data-lucide="message-square"></i>
+                Message Detector
+            </a>
+
+            <a href="/safety-tips">
+                <i data-lucide="shield"></i>
+                Safety Tips
+            </a>
+
+            <a href="/quiz">
+                <i data-lucide="clipboard-check"></i>
+                Quiz
+            </a>
+
+            <a href="/features">
+                <i data-lucide="layout-grid"></i>
+                Features
+            </a>
+
+            <a href="/history">
+                <i data-lucide="history"></i>
+                History
+            </a>
+
+        </nav>
+
+    </div>
 
 </header>
 
 
-<main>
 
-    <section class="page-heading">
+<!-- =========================
+     MAIN
+========================= -->
 
-        <div class="eyebrow">
-            <i data-lucide="qr-code"></i>
-            QR SECURITY SCANNER
+<main class="wrap">
+
+
+    <!-- =========================
+         BLUE HERO
+    ========================= -->
+
+    <section class="page-hero">
+
+        <div class="hero-inner">
+
+            <div class="hero-icon">
+
+                <i data-lucide="qr-code"></i>
+
+            </div>
+
+
+            <div class="hero-content">
+
+                <div class="hero-label">
+
+                    <i data-lucide="scan-line"></i>
+
+                    QR SECURITY
+
+                </div>
+
+
+                <h1>
+                    QR Code Scanner
+                </h1>
+
+
+                <p>
+                    Scan a QR code to extract its URL and check it for
+                    potentially suspicious or harmful activity.
+                </p>
+
+            </div>
+
         </div>
-
-        <h1>
-            Scan Before You Trust
-        </h1>
-
-        <p class="intro">
-            Upload a QR code and analyze the URL hidden inside it
-            for potentially suspicious or risky activity.
-        </p>
 
     </section>
 
+
+
+    <!-- =========================
+         SCANNER CARD
+    ========================= -->
 
     <section class="scanner-card">
 
         <div class="card-heading">
 
-            <div class="card-icon">
-                <i data-lucide="scan-line"></i>
-            </div>
+            <i
+                data-lucide="scan-search"
+                class="card-heading-icon"
+            ></i>
 
             <div>
-                <h2>Upload QR Code</h2>
-                <p>Select an image containing a QR code to begin.</p>
+
+                <h2>
+                    Scan a QR Code
+                </h2>
+
+                <p>
+                    Upload an image containing a QR code to analyze its destination.
+                </p>
+
             </div>
 
         </div>
 
 
-        <form action="/scan-qr" method="POST" enctype="multipart/form-data">
+
+        <form
+            action="/scan-qr"
+            method="POST"
+            enctype="multipart/form-data"
+        >
 
             <div class="upload-area">
 
                 <div class="upload-icon">
-                    <i data-lucide="upload"></i>
+
+                    <i data-lucide="file-image"></i>
+
                 </div>
 
-                <h3>Select your QR image</h3>
+
+                <h3>
+                    Upload QR Code Image
+                </h3>
+
 
                 <p>
-                    Supported image formats can be uploaded for analysis.
+                    Select a clear image containing a QR code.
                 </p>
 
-                <label for="qr_image" class="file-label">
-                    <i data-lucide="image"></i>
-                    Choose QR Image
-                </label>
 
                 <input
                     type="file"
-                    id="qr_image"
                     name="qr_image"
                     accept="image/*"
                     required
                 >
 
+
+                <button
+                    type="submit"
+                    class="scan-button"
+                >
+
+                    <i data-lucide="scan-line"></i>
+
+                    Scan QR Code
+
+                </button>
+
             </div>
-
-
-            <button type="submit" class="scan-button">
-                <i data-lucide="scan-line"></i>
-                Scan QR Code
-            </button>
 
         </form>
 
 
+
+        <!-- =========================
+             ERROR
+        ========================= -->
+
         {% if qr_error %}
-            <div class="message error">
+
+        <div class="qr-error">
+
+            <i data-lucide="circle-alert"></i>
+
+            <span>
                 {{ qr_error }}
-            </div>
+            </span>
+
+        </div>
+
         {% endif %}
 
+
+
+        <!-- =========================
+             SUCCESS / RESULT
+        ========================= -->
 
         {% if qr_success %}
-            <div class="message success">
-                {{ qr_success }}
-            </div>
-        {% endif %}
 
-    </section>
+        <div class="result-card">
 
+            <div class="result-header">
 
-    {% if qr_result %}
+                <i data-lucide="file-search"></i>
 
-    <section class="result-card">
+                <h2>
+                    QR Analysis Result
+                </h2>
 
-        <div class="result-header">
-            <i data-lucide="shield-check"></i>
-            <h2>QR Security Analysis</h2>
-        </div>
-
-
-        {% if qr_url %}
-            <div class="result-url">
-                <strong>Detected URL:</strong><br>
-                {{ qr_url }}
-            </div>
-        {% endif %}
-
-
-        {% if qr_risk_percentage is not none %}
-
-        <div class="risk-section">
-
-            <div class="risk-label">
-                <span>Risk Score</span>
-                <span>{{ qr_risk_percentage }}%</span>
             </div>
 
-            <div class="risk-bar">
-                <div
-                    class="risk-fill"
-                    style="width: {{ qr_risk_percentage }}%;">
+
+            <div class="result-body">
+
+
+                <!-- SCANNED URL -->
+
+                <div class="url-box">
+
+                    <div class="url-label">
+                        Extracted URL
+                    </div>
+
+                    <div class="url-value">
+                        {{ qr_url }}
+                    </div>
+
                 </div>
+
+
+
+                <!-- RISK -->
+
+                <div class="risk-section">
+
+                    <div class="risk-top">
+
+                        <div class="risk-title">
+
+                            <i data-lucide="gauge"></i>
+
+                            Risk Assessment
+
+                        </div>
+
+
+                        <div class="risk-percentage">
+
+                            {{ qr_risk_percentage }}%
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="risk-bar">
+
+                        <div class="risk-fill"></div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- RESULT -->
+
+                <div class="result-text">
+
+                    <strong>
+                        Assessment:
+                    </strong>
+
+                    {{ qr_result }}
+
+                </div>
+
+
+
+                <!-- FEATURES -->
+
+                {% if qr_features %}
+
+                <div class="features-section">
+
+                    <div class="features-title">
+
+                        <i data-lucide="list-checks"></i>
+
+                        Security Indicators
+
+                    </div>
+
+
+                    <ul class="features-list">
+
+                        {% for feature in qr_features %}
+
+                        <li>
+                            {{ feature }}
+                        </li>
+
+                        {% endfor %}
+
+                    </ul>
+
+                </div>
+
+                {% endif %}
+
             </div>
 
         </div>
 
         {% endif %}
 
-
-        {% if qr_features %}
-
-        <div class="features">
-
-            <h3>Analysis Details</h3>
-
-            <ul>
-                {% for feature in qr_features %}
-                    <li>{{ feature }}</li>
-                {% endfor %}
-            </ul>
-
-        </div>
-
-        {% endif %}
-
     </section>
-
-    {% endif %}
 
 </main>
 
 
+
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
-    Cyber Safety Analyzer &nbsp;•&nbsp; Stay alert. Stay secure.
+
+    <div class="wrap">
+
+        AI-Based Phishing Detection &amp;
+        Cyber Safety Analyzer
+
+        <br>
+
+        <span>
+            Automated results are estimates, not guarantees.
+        </span>
+
+    </div>
+
 </footer>
 
 
+
 <script>
+
     lucide.createIcons();
 
-    const fileInput = document.getElementById("qr_image");
-
-    if (fileInput) {
-        fileInput.addEventListener("change", function () {
-
-            const label = document.querySelector(".file-label");
-
-            if (this.files.length > 0) {
-                label.innerHTML =
-                    '<i data-lucide="file-image"></i> ' +
-                    this.files[0].name;
-
-                lucide.createIcons();
-            }
-        });
-    }
 </script>
 
+
 </body>
+
 </html>
