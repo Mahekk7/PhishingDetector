@@ -7,13 +7,14 @@
 
     <title>Scan History - Cyber Safety Analyzer</title>
 
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
 
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         html {
@@ -21,94 +22,155 @@
         }
 
         body {
-            margin: 0;
-            font-family: "Segoe UI", Arial, sans-serif;
-            background: #ffffff;
-            color: #1e293b;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f8fc;
+            color: #172033;
             min-height: 100vh;
+            line-height: 1.6;
         }
+
 
         /* ================= HEADER ================= */
 
         header {
             background: #0b1f3a;
-            color: #ffffff;
-            padding: 38px 20px;
-            text-align: center;
-            box-shadow: 0 4px 18px rgba(15, 23, 42, 0.12);
+            color: white;
+            padding: 22px 0;
+            box-shadow: 0 4px 18px rgba(11, 31, 58, 0.12);
         }
 
-        .header-icon {
-            width: 34px;
-            height: 34px;
-            vertical-align: middle;
-            margin-right: 8px;
-            stroke-width: 1.8;
+        .wrap {
+            width: 92%;
+            max-width: 1200px;
+            margin: auto;
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 30px;
+        .nav {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .brand {
+            color: white;
+            text-decoration: none;
+            font-size: 23px;
             font-weight: 700;
-            letter-spacing: 0.2px;
+            display: flex;
+            align-items: center;
+            gap: 9px;
         }
 
-        header p {
-            margin: 10px 0 0;
-            font-size: 15px;
-            color: #cbd5e1;
+        .brand svg {
+            width: 25px;
+            height: 25px;
         }
 
-        /* ================= NAVIGATION ================= */
-
-        .navigation {
+        .links {
             display: flex;
             justify-content: center;
-            padding: 14px 20px;
-            background: #ffffff;
-            border-bottom: 1px solid #e2e8f0;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 9px;
         }
 
-        .nav-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+        .links a {
+            color: #dbe7f5;
             text-decoration: none;
-            background: #123b66;
-            color: #ffffff;
-            padding: 10px 20px;
+            padding: 8px 11px;
             border-radius: 7px;
-            font-weight: 600;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
             transition: 0.2s ease;
         }
 
-        .nav-btn:hover {
-            background: #0b2d4d;
-            transform: translateY(-1px);
+        .links a:hover {
+            background: #17365f;
+            color: white;
         }
 
-        .nav-btn svg {
-            width: 17px;
-            height: 17px;
+        .links svg {
+            width: 16px;
+            height: 16px;
         }
+
 
         /* ================= MAIN ================= */
 
-        .container {
-            width: 92%;
-            max-width: 1100px;
-            margin: 35px auto;
+        main {
+            padding: 50px 0 70px;
         }
+
+
+        /* ================= PAGE INTRO ================= */
+
+        .page-intro {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 35px;
+        }
+
+        .intro-icon {
+            width: 62px;
+            height: 62px;
+            margin: 0 auto 18px;
+            border-radius: 16px;
+            background: #e7f0ff;
+            color: #2563eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .intro-icon svg {
+            width: 33px;
+            height: 33px;
+            stroke-width: 1.8;
+        }
+
+        .intro-label {
+            color: #2563eb;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            margin-bottom: 7px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .intro-label svg {
+            width: 15px;
+            height: 15px;
+        }
+
+        .page-intro h1 {
+            color: #0b1f3a;
+            font-size: 34px;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .intro-text {
+            color: #64748b;
+            font-size: 15px;
+        }
+
 
         /* ================= MAIN CARD ================= */
 
         .card {
-            background: #ffffff;
-            padding: 32px;
-            border-radius: 12px;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 6px 24px rgba(15, 23, 42, 0.06);
+            background: white;
+            border: 1px solid #e1e8f0;
+            border-radius: 14px;
+            padding: 30px;
+            box-shadow: 0 7px 24px rgba(11, 31, 58, 0.05);
         }
+
 
         /* ================= HISTORY HEADER ================= */
 
@@ -129,7 +191,7 @@
         .heading-icon {
             width: 27px;
             height: 27px;
-            color: #123b66;
+            color: #2563eb;
             margin-top: 3px;
             flex-shrink: 0;
         }
@@ -137,14 +199,15 @@
         .card h2 {
             margin: 0;
             color: #0b1f3a;
-            font-size: 25px;
+            font-size: 24px;
         }
 
         .history-header p {
-            margin: 6px 0 0;
+            margin: 5px 0 0;
             color: #64748b;
             font-size: 14px;
         }
+
 
         /* ================= CLEAR BUTTON ================= */
 
@@ -153,10 +216,10 @@
             align-items: center;
             gap: 8px;
             border: 1px solid #fecaca;
-            background: #ffffff;
+            background: white;
             color: #b91c1c;
             padding: 10px 16px;
-            border-radius: 7px;
+            border-radius: 8px;
             cursor: pointer;
             font-size: 14px;
             font-weight: 600;
@@ -174,12 +237,13 @@
             border-color: #fca5a5;
         }
 
+
         /* ================= TABLE ================= */
 
         .table-container {
             width: 100%;
             overflow-x: auto;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #e1e8f0;
             border-radius: 9px;
         }
 
@@ -191,7 +255,7 @@
 
         th {
             background: #0b1f3a;
-            color: #ffffff;
+            color: white;
             padding: 14px 15px;
             text-align: left;
             font-size: 13px;
@@ -208,7 +272,7 @@
         }
 
         tr {
-            background: #ffffff;
+            background: white;
             transition: 0.15s ease;
         }
 
@@ -223,6 +287,7 @@
         tbody tr:last-child td {
             border-bottom: none;
         }
+
 
         /* ================= SCAN TYPE BADGES ================= */
 
@@ -259,6 +324,7 @@
             border: 1px solid #bae6fd;
         }
 
+
         /* ================= STATUS ================= */
 
         .status {
@@ -285,6 +351,7 @@
             color: #b45309;
         }
 
+
         /* ================= EMPTY HISTORY ================= */
 
         .empty-history {
@@ -298,7 +365,7 @@
         .empty-icon {
             width: 45px;
             height: 45px;
-            color: #123b66;
+            color: #2563eb;
             margin-bottom: 12px;
         }
 
@@ -313,6 +380,7 @@
             margin: 0 0 22px;
         }
 
+
         /* ================= HOME BUTTON ================= */
 
         .home-btn {
@@ -320,10 +388,10 @@
             align-items: center;
             gap: 8px;
             text-decoration: none;
-            background: #123b66;
-            color: #ffffff;
+            background: #2563eb;
+            color: white;
             padding: 11px 20px;
-            border-radius: 7px;
+            border-radius: 8px;
             font-weight: 600;
             transition: 0.2s ease;
         }
@@ -334,9 +402,10 @@
         }
 
         .home-btn:hover {
-            background: #0b2d4d;
+            background: #1d4ed8;
             transform: translateY(-1px);
         }
+
 
         /* ================= FOOTER ================= */
 
@@ -345,47 +414,51 @@
             background: #0b1f3a;
             color: #cbd5e1;
             padding: 24px;
-            margin-top: 45px;
+            margin-top: 20px;
         }
 
         footer p {
-            margin: 6px 0;
+            margin: 5px 0;
+            font-size: 13px;
         }
+
 
         /* ================= MOBILE ================= */
 
         @media (max-width: 700px) {
 
             header {
-                padding: 30px 15px;
+                padding: 18px 0;
             }
 
-            header h1 {
-                font-size: 23px;
-                line-height: 1.4;
+            .brand {
+                font-size: 20px;
             }
 
-            header p {
-                font-size: 13px;
-                line-height: 1.5;
+            .links {
+                gap: 4px;
             }
 
-            .container {
-                width: 94%;
-                margin-top: 24px;
+            .links a {
+                font-size: 12px;
+                padding: 7px 8px;
+            }
+
+            main {
+                padding: 40px 0 55px;
+            }
+
+            .page-intro h1 {
+                font-size: 28px;
+            }
+
+            .intro-text {
+                font-size: 14px;
+                padding: 0 10px;
             }
 
             .card {
                 padding: 21px;
-            }
-
-            .navigation {
-                padding: 12px;
-            }
-
-            .nav-btn {
-                width: 90%;
-                justify-content: center;
             }
 
             .history-header {
@@ -415,349 +488,447 @@
 
 </head>
 
+
 <body>
 
-    <!-- ================= HEADER ================= -->
 
-    <header>
+<!-- ================= HEADER ================= -->
 
-        <h1>
-            <i data-lucide="history" class="header-icon"></i>
-            Scan History
-        </h1>
+<header>
 
-        <p>
-            View previously analyzed URLs, QR codes and messages
-        </p>
+    <div class="wrap nav">
 
-    </header>
+        <a href="/" class="brand">
 
+            <i data-lucide="shield-check"></i>
 
-    <!-- ================= NAVIGATION ================= -->
+            CyberShield Analyzer
 
-    <div class="navigation">
-
-        <a href="/" class="nav-btn">
-            <i data-lucide="house"></i>
-            Back to Analyzer
         </a>
+
+
+        <nav class="links">
+
+            <a href="/">
+                <i data-lucide="link"></i>
+                URL Analyzer
+            </a>
+
+            <a href="/qr-scanner">
+                <i data-lucide="qr-code"></i>
+                QR Scanner
+            </a>
+
+            <a href="/message-detector">
+                <i data-lucide="message-square"></i>
+                Message Detector
+            </a>
+
+            <a href="/safety-tips">
+                <i data-lucide="shield"></i>
+                Safety Tips
+            </a>
+
+            <a href="/quiz">
+                <i data-lucide="clipboard-check"></i>
+                Quiz
+            </a>
+
+            <a href="/features">
+                <i data-lucide="layout-grid"></i>
+                Features
+            </a>
+
+            <a href="/history">
+                <i data-lucide="history"></i>
+                History
+            </a>
+
+        </nav>
 
     </div>
 
+</header>
 
-    <!-- ================= MAIN ================= -->
 
-    <div class="container">
+<!-- ================= MAIN ================= -->
 
-        <div class="card">
+<main class="wrap">
 
-            <!-- HISTORY HEADER -->
 
-            <div class="history-header">
+    <!-- PAGE INTRO -->
 
-                <div class="history-heading">
+    <section class="page-intro">
 
-                    <i data-lucide="shield-check" class="heading-icon"></i>
+        <div class="intro-icon">
 
-                    <div>
+            <i data-lucide="history"></i>
 
-                        <h2>
-                            Analysis History
-                        </h2>
+        </div>
 
-                        <p>
-                            Your recent security scans are shown below.
-                        </p>
 
-                    </div>
+        <div class="intro-label">
+
+            <i data-lucide="database"></i>
+
+            SECURITY RECORDS
+
+        </div>
+
+
+        <h1>
+            Scan History
+        </h1>
+
+
+        <p class="intro-text">
+            Review your previously analyzed URLs, QR codes and messages
+            in one place.
+        </p>
+
+    </section>
+
+
+    <!-- HISTORY CARD -->
+
+    <div class="card">
+
+
+        <!-- HISTORY HEADER -->
+
+        <div class="history-header">
+
+            <div class="history-heading">
+
+                <i
+                    data-lucide="shield-check"
+                    class="heading-icon"
+                ></i>
+
+
+                <div>
+
+                    <h2>
+                        Analysis History
+                    </h2>
+
+                    <p>
+                        Your recent security scans are shown below.
+                    </p>
 
                 </div>
 
-
-                {% if history %}
-
-                <form
-                    action="/clear-history"
-                    method="POST"
-                    onsubmit="return confirmClearHistory();"
-                >
-
-                    <button type="submit" class="clear-btn">
-
-                        <i data-lucide="trash-2"></i>
-
-                        Clear History
-
-                    </button>
-
-                </form>
-
-                {% endif %}
-
             </div>
 
-
-            <!-- ================= HISTORY TABLE ================= -->
 
             {% if history %}
 
-            <div class="table-container">
+            <form
+                action="/clear-history"
+                method="POST"
+                onsubmit="return confirmClearHistory();"
+            >
 
-                <table>
+                <button
+                    type="submit"
+                    class="clear-btn"
+                >
 
-                    <thead>
+                    <i data-lucide="trash-2"></i>
 
-                        <tr>
+                    Clear History
 
-                            <th>ID</th>
+                </button>
 
-                            <th>Scan Type</th>
-
-                            <th>Input</th>
-
-                            <th>Result</th>
-
-                            <th>Risk</th>
-
-                            <th>Date & Time</th>
-
-                        </tr>
-
-                    </thead>
-
-
-                    <tbody>
-
-                        {% for item in history %}
-
-                        <tr>
-
-                            <!-- ID -->
-
-                            <td>
-                                {{ item[0] }}
-                            </td>
-
-
-                            <!-- SCAN TYPE -->
-
-                            <td>
-
-                                {% if item[1] == "URL" %}
-
-                                <span class="badge badge-url">
-
-                                    <i data-lucide="link"></i>
-
-                                    URL
-
-                                </span>
-
-                                {% elif item[1] == "QR" %}
-
-                                <span class="badge badge-qr">
-
-                                    <i data-lucide="scan-qr-code"></i>
-
-                                    QR
-
-                                </span>
-
-                                {% elif item[1] == "Message" %}
-
-                                <span class="badge badge-message">
-
-                                    <i data-lucide="message-square"></i>
-
-                                    Message
-
-                                </span>
-
-                                {% else %}
-
-                                <span class="badge badge-url">
-
-                                    {{ item[1] }}
-
-                                </span>
-
-                                {% endif %}
-
-                            </td>
-
-
-                            <!-- INPUT -->
-
-                            <td>
-                                {{ item[2] }}
-                            </td>
-
-
-                            <!-- RESULT -->
-
-                            <td>
-
-                                {% set result_text = item[3]|string %}
-
-                                {% if "Phishing" in result_text or "High Risk" in result_text %}
-
-                                <span class="status status-danger">
-
-                                    <i data-lucide="circle-x"></i>
-
-                                    {{ result_text }}
-
-                                </span>
-
-                                {% elif "Suspicious" in result_text %}
-
-                                <span class="status status-warning">
-
-                                    <i data-lucide="triangle-alert"></i>
-
-                                    {{ result_text }}
-
-                                </span>
-
-                                {% else %}
-
-                                <span class="status status-safe">
-
-                                    <i data-lucide="circle-check"></i>
-
-                                    {{ result_text }}
-
-                                </span>
-
-                                {% endif %}
-
-                            </td>
-
-
-                            <!-- RISK -->
-
-                            <td>
-
-                                {% if item|length > 4 %}
-
-                                    {% if item[4] is not none %}
-
-                                        {{ item[4] }}%
-
-                                    {% else %}
-
-                                        -
-
-                                    {% endif %}
-
-                                {% else %}
-
-                                    -
-
-                                {% endif %}
-
-                            </td>
-
-
-                            <!-- DATE -->
-
-                            <td>
-
-                                {% if item|length > 5 %}
-
-                                    {% if item[5] is not none %}
-
-                                        {{ item[5] }}
-
-                                    {% else %}
-
-                                        -
-
-                                    {% endif %}
-
-                                {% else %}
-
-                                    -
-
-                                {% endif %}
-
-                            </td>
-
-                        </tr>
-
-                        {% endfor %}
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-
-            {% else %}
-
-            <!-- ================= EMPTY HISTORY ================= -->
-
-            <div class="empty-history">
-
-                <i data-lucide="inbox" class="empty-icon"></i>
-
-                <h3>
-                    No Scan History Yet
-                </h3>
-
-                <p>
-                    Your analyzed URLs, QR codes and messages
-                    will appear here.
-                </p>
-
-                <a href="/" class="home-btn">
-
-                    <i data-lucide="scan-search"></i>
-
-                    Start Scanning
-
-                </a>
-
-            </div>
+            </form>
 
             {% endif %}
 
         </div>
 
+
+        <!-- ================= HISTORY TABLE ================= -->
+
+        {% if history %}
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+
+                        <th>Scan Type</th>
+
+                        <th>Input</th>
+
+                        <th>Result</th>
+
+                        <th>Risk</th>
+
+                        <th>Date & Time</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for item in history %}
+
+                    <tr>
+
+
+                        <!-- ID -->
+
+                        <td>
+                            {{ item[0] }}
+                        </td>
+
+
+                        <!-- SCAN TYPE -->
+
+                        <td>
+
+                            {% if item[1] == "URL" %}
+
+                            <span class="badge badge-url">
+
+                                <i data-lucide="link"></i>
+
+                                URL
+
+                            </span>
+
+
+                            {% elif item[1] == "QR" %}
+
+                            <span class="badge badge-qr">
+
+                                <i data-lucide="scan-qr-code"></i>
+
+                                QR
+
+                            </span>
+
+
+                            {% elif item[1] == "Message" %}
+
+                            <span class="badge badge-message">
+
+                                <i data-lucide="message-square"></i>
+
+                                Message
+
+                            </span>
+
+
+                            {% else %}
+
+                            <span class="badge badge-url">
+
+                                {{ item[1] }}
+
+                            </span>
+
+                            {% endif %}
+
+                        </td>
+
+
+                        <!-- INPUT -->
+
+                        <td>
+                            {{ item[2] }}
+                        </td>
+
+
+                        <!-- RESULT -->
+
+                        <td>
+
+                            {% set result_text = item[3]|string %}
+
+
+                            {% if "Phishing" in result_text
+                               or "High Risk" in result_text %}
+
+                            <span class="status status-danger">
+
+                                <i data-lucide="circle-x"></i>
+
+                                {{ result_text }}
+
+                            </span>
+
+
+                            {% elif "Suspicious" in result_text %}
+
+                            <span class="status status-warning">
+
+                                <i data-lucide="triangle-alert"></i>
+
+                                {{ result_text }}
+
+                            </span>
+
+
+                            {% else %}
+
+                            <span class="status status-safe">
+
+                                <i data-lucide="circle-check"></i>
+
+                                {{ result_text }}
+
+                            </span>
+
+                            {% endif %}
+
+                        </td>
+
+
+                        <!-- RISK -->
+
+                        <td>
+
+                            {% if item|length > 4 %}
+
+                                {% if item[4] is not none %}
+
+                                    {{ item[4] }}%
+
+                                {% else %}
+
+                                    -
+
+                                {% endif %}
+
+                            {% else %}
+
+                                -
+
+                            {% endif %}
+
+                        </td>
+
+
+                        <!-- DATE -->
+
+                        <td>
+
+                            {% if item|length > 5 %}
+
+                                {% if item[5] is not none %}
+
+                                    {{ item[5] }}
+
+                                {% else %}
+
+                                    -
+
+                                {% endif %}
+
+                            {% else %}
+
+                                -
+
+                            {% endif %}
+
+                        </td>
+
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        {% else %}
+
+
+        <!-- ================= EMPTY HISTORY ================= -->
+
+        <div class="empty-history">
+
+            <i
+                data-lucide="inbox"
+                class="empty-icon"
+            ></i>
+
+
+            <h3>
+                No Scan History Yet
+            </h3>
+
+
+            <p>
+                Your analyzed URLs, QR codes and messages
+                will appear here.
+            </p>
+
+
+            <a
+                href="/"
+                class="home-btn"
+            >
+
+                <i data-lucide="scan-search"></i>
+
+                Start Scanning
+
+            </a>
+
+        </div>
+
+
+        {% endif %}
+
     </div>
 
-
-    <!-- ================= FOOTER ================= -->
-
-    <footer>
-
-        <p>
-            AI-Based Phishing Detection & Cyber Safety Analyzer
-        </p>
-
-        <p>
-            Cyber Safety Awareness Project
-        </p>
-
-    </footer>
+</main>
 
 
-    <!-- ================= JAVASCRIPT ================= -->
+<!-- ================= FOOTER ================= -->
 
-    <script>
+<footer>
 
-        function confirmClearHistory() {
+    <p>
+        AI-Based Phishing Detection & Cyber Safety Analyzer
+    </p>
 
-            return confirm(
-                "Are you sure you want to clear all scan history?"
-            );
+    <p>
+        Cyber Safety Awareness Project
+    </p>
 
-        }
+</footer>
 
-        lucide.createIcons();
 
-    </script>
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+    function confirmClearHistory() {
+
+        return confirm(
+            "Are you sure you want to clear all scan history?"
+        );
+
+    }
+
+    lucide.createIcons();
+
+</script>
+
 
 </body>
 
