@@ -1,332 +1,649 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Project Features | PhishingDetector</title>
+<title>Project Features | CyberShield Analyzer</title>
+
+<script src="https://unpkg.com/lucide@latest"></script>
 
 <style>
+
 *{
     box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 body{
-    margin:0;
-    background:
-        radial-gradient(circle at top left, #ffd6ea 0%, transparent 35%),
-        radial-gradient(circle at bottom right, #ffe5f1 0%, transparent 35%),
-        #fff7fb;
-    color:#3d1830;
-    font-family:Segoe UI,Arial,sans-serif;
+    background:#f5f8fc;
+    color:#172033;
+    font-family:Arial, Helvetica, sans-serif;
     line-height:1.6;
 }
 
-header{
-    background:linear-gradient(135deg,#ff8fc4,#f45b9f,#df3d87);
-    padding:18px;
-    box-shadow:0 4px 18px rgba(190,45,112,.18);
-}
+/* ================= HEADER ================= */
 
-footer{
-    background:linear-gradient(135deg,#ffe1ef,#ffd1e5);
-    border-top:1px solid #f3b4d0;
-    padding:20px 18px;
-    color:#7b4964;
+header{
+    background:#0b1f3a;
+    color:white;
+    padding:22px 0;
 }
 
 .wrap{
-    width:min(1050px,92%);
+    width:92%;
+    max-width:1200px;
     margin:auto;
 }
 
 .nav{
     display:flex;
-    gap:12px;
+    flex-direction:column;
     align-items:center;
-    justify-content:space-between;
-    flex-wrap:wrap;
+    gap:18px;
 }
 
 .brand{
-    font-weight:800;
-    color:#ffffff;
+    color:white;
     text-decoration:none;
-    font-size:1.1rem;
+    font-size:23px;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    gap:9px;
+}
+
+.brand svg{
+    width:25px;
+    height:25px;
 }
 
 .links{
     display:flex;
-    gap:7px;
+    justify-content:center;
+    align-items:center;
     flex-wrap:wrap;
+    gap:9px;
 }
 
-.links a,
-.btn{
-    color:#6e234c;
+.links a{
+    color:#dbe7f5;
     text-decoration:none;
-    border:1px solid #f0a9ca;
-    border-radius:10px;
     padding:8px 11px;
-    background:rgba(255,255,255,.82);
+    border-radius:7px;
+    font-size:13px;
+    display:flex;
+    align-items:center;
+    gap:6px;
     transition:.2s ease;
 }
 
-.links a:hover,
-.btn:hover{
-    background:#fff;
-    border-color:#e94d96;
-    color:#c52770;
-    transform:translateY(-1px);
+.links a:hover{
+    background:#17365f;
+    color:white;
 }
+
+.links svg{
+    width:16px;
+    height:16px;
+}
+
+
+/* ================= MAIN ================= */
 
 main{
-    padding:35px 0 60px;
+    padding:55px 0 70px;
 }
 
-.eyebrow{
-    color:#d52c79;
-    font-size:.8rem;
-    font-weight:bold;
+
+/* ================= INTRO ================= */
+
+.page-intro{
+    text-align:center;
+    max-width:760px;
+    margin:0 auto 40px;
+}
+
+.intro-icon{
+    width:62px;
+    height:62px;
+    margin:0 auto 18px;
+    border-radius:16px;
+    background:#e7f0ff;
+    color:#2563eb;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.intro-icon svg{
+    width:33px;
+    height:33px;
+    stroke-width:1.8;
+}
+
+.intro-label{
+    color:#2563eb;
+    font-size:12px;
+    font-weight:700;
     letter-spacing:1.5px;
+    margin-bottom:7px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+}
+
+.intro-label svg{
+    width:15px;
+    height:15px;
 }
 
 h1{
-    font-size:clamp(2rem,4vw,3rem);
-    line-height:1.15;
-    margin:10px 0;
-    color:#531d3c;
+    color:#0b1f3a;
+    font-size:34px;
+    line-height:1.2;
+    margin-bottom:12px;
 }
 
-h2{
-    color:#642143;
+.intro-text{
+    color:#64748b;
+    font-size:15px;
+    max-width:680px;
+    margin:auto;
 }
 
-h3{
-    color:#642143;
-    margin-bottom:8px;
+
+/* ================= FEATURE GRID ================= */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
 }
 
-p,
-.muted{
-    color:#79556a;
-}
+
+/* ================= FEATURE CARD ================= */
 
 .card{
-    background:rgba(255,255,255,.9);
-    border:1px solid #f2bfd6;
-    border-radius:17px;
-    padding:22px;
-    margin-top:20px;
-    box-shadow:0 8px 25px rgba(187,55,112,.08);
+    background:white;
+    border:1px solid #e1e8f0;
+    border-radius:14px;
+    padding:25px;
+    box-shadow:0 7px 22px rgba(11,31,58,.05);
     transition:.2s ease;
 }
 
 .card:hover{
     transform:translateY(-3px);
-    box-shadow:0 12px 30px rgba(187,55,112,.13);
+    box-shadow:0 12px 28px rgba(11,31,58,.09);
 }
 
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:14px;
+.feature-icon{
+    width:46px;
+    height:46px;
+    border-radius:11px;
+    background:#edf4ff;
+    color:#2563eb;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:17px;
 }
 
-.field{
-    display:block;
-    width:100%;
-    margin-top:7px;
-    background:#fff8fc;
-    color:#4a2037;
-    border:1px solid #efb2ce;
-    border-radius:10px;
-    padding:12px;
-    font:inherit;
-}
-
-label{
-    display:block;
-    margin:9px 0;
-}
-
-.primary{
-    background:linear-gradient(135deg,#f75ca3,#d92f79);
-    color:#ffffff;
-    border:0;
-    border-radius:10px;
-    padding:12px 16px;
-    font-weight:800;
-    margin-top:14px;
-    cursor:pointer;
-    box-shadow:0 5px 14px rgba(216,47,121,.2);
-}
-
-.primary:hover{
-    background:linear-gradient(135deg,#ff70b0,#d32974);
-}
-
-.alert,
-.result{
-    padding:14px;
-    border:1px solid #edb3cd;
-    border-radius:12px;
-    margin-top:16px;
-    overflow-wrap:anywhere;
-    background:#fffafd;
-}
-
-.error{
-    border-color:#ef8cae;
-}
-
-.success{
-    border-color:#e68bb8;
+.feature-icon svg{
+    width:23px;
+    height:23px;
 }
 
 .pill{
-    color:#d42b78;
-    font-weight:800;
-    font-size:.85rem;
+    color:#2563eb;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1px;
+    display:block;
+    margin-bottom:6px;
 }
 
-.quiz-question{
-    border-bottom:1px solid #f1c5d9;
-    padding:12px 0;
+h3{
+    color:#0b1f3a;
+    font-size:19px;
+    margin-bottom:8px;
 }
 
-@media(max-width:700px){
-    .nav{
-        align-items:flex-start;
+.card p{
+    color:#64748b;
+    font-size:14px;
+    line-height:1.65;
+    margin-bottom:20px;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    color:#2563eb;
+    text-decoration:none;
+    font-size:13px;
+    font-weight:700;
+    border:1px solid #d8e4f3;
+    background:#f8fbff;
+    border-radius:8px;
+    padding:9px 12px;
+    transition:.2s ease;
+}
+
+.btn:hover{
+    background:#2563eb;
+    border-color:#2563eb;
+    color:white;
+}
+
+.btn svg{
+    width:15px;
+    height:15px;
+}
+
+
+/* ================= LIMITATIONS ================= */
+
+.limitations{
+    margin-top:22px;
+    display:flex;
+    align-items:flex-start;
+    gap:15px;
+    background:white;
+    border:1px solid #e1e8f0;
+    border-radius:14px;
+    padding:24px;
+    box-shadow:0 7px 22px rgba(11,31,58,.04);
+}
+
+.limit-icon{
+    width:43px;
+    height:43px;
+    min-width:43px;
+    border-radius:10px;
+    background:#fff6df;
+    color:#b7791f;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.limit-icon svg{
+    width:22px;
+    height:22px;
+}
+
+.limitations h2{
+    color:#0b1f3a;
+    font-size:19px;
+    margin-bottom:5px;
+}
+
+.limitations p{
+    color:#64748b;
+    font-size:14px;
+}
+
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#0b1f3a;
+    color:#aebdd0;
+    text-align:center;
+    padding:22px;
+    font-size:13px;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width:900px){
+
+    .grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:650px){
+
+    header{
+        padding:18px 0;
+    }
+
+    .brand{
+        font-size:20px;
     }
 
     .links{
-        width:100%;
+        gap:4px;
     }
 
     .links a{
-        flex:1 1 auto;
-        text-align:center;
+        font-size:12px;
+        padding:7px 8px;
     }
 
     main{
-        padding-top:25px;
+        padding:40px 0 55px;
+    }
+
+    h1{
+        font-size:28px;
+    }
+
+    .intro-text{
+        font-size:14px;
+        padding:0 10px;
+    }
+
+    .grid{
+        grid-template-columns:1fr;
     }
 
     .card{
-        padding:18px;
+        padding:21px;
     }
+
+    .limitations{
+        padding:20px;
+    }
+
 }
+
 </style>
 </head>
 
+
 <body>
 
+
+<!-- ================= HEADER ================= -->
+
 <header>
+
 <div class="wrap nav">
 
-<a class="brand" href="/">CyberShield Analyzer</a>
+<a class="brand" href="/">
+    <i data-lucide="shield-check"></i>
+    CyberShield Analyzer
+</a>
 
 <nav class="links">
-<a href="/">URL Analyzer</a>
-<a href="/qr-scanner">QR Scanner</a>
-<a href="/message-detector">Message Detector</a>
-<a href="/safety-tips">Safety Tips</a>
-<a href="/quiz">Quiz</a>
-<a href="/features">Features</a>
-<a href="/history">History</a>
+
+<a href="/">
+    <i data-lucide="link"></i>
+    URL Analyzer
+</a>
+
+<a href="/qr-scanner">
+    <i data-lucide="qr-code"></i>
+    QR Scanner
+</a>
+
+<a href="/message-detector">
+    <i data-lucide="message-square"></i>
+    Message Detector
+</a>
+
+<a href="/safety-tips">
+    <i data-lucide="shield"></i>
+    Safety Tips
+</a>
+
+<a href="/quiz">
+    <i data-lucide="clipboard-check"></i>
+    Quiz
+</a>
+
+<a href="/features">
+    <i data-lucide="layout-grid"></i>
+    Features
+</a>
+
+<a href="/history">
+    <i data-lucide="history"></i>
+    History
+</a>
+
 </nav>
 
 </div>
+
 </header>
+
+
+<!-- ================= MAIN ================= -->
 
 <main class="wrap">
 
-<div class="eyebrow">PROJECT OVERVIEW</div>
 
-<h1>Features of the analyzer</h1>
+<!-- INTRO -->
 
-<p>
-Explore the project's analysis tools, scan history, and cyber-safety learning pages.
+<section class="page-intro">
+
+<div class="intro-icon">
+    <i data-lucide="layers-3"></i>
+</div>
+
+<div class="intro-label">
+    <i data-lucide="sparkles"></i>
+    PROJECT OVERVIEW
+</div>
+
+<h1>Features of the Analyzer</h1>
+
+<p class="intro-text">
+    Explore the tools built into CyberShield Analyzer for detecting suspicious
+    URLs, QR codes and messages, while learning practical cyber-safety habits.
 </p>
+
+</section>
+
+
+<!-- FEATURES -->
 
 <section class="grid">
 
+
+<!-- 01 -->
+
 <article class="card">
+
+<div class="feature-icon">
+    <i data-lucide="scan-search"></i>
+</div>
+
 <span class="pill">01 · URL</span>
+
 <h3>Website URL Analysis</h3>
+
 <p>
 Uses the trained model and extracted URL features to estimate phishing risk.
 </p>
-<a class="btn" href="/">Open URL Analyzer →</a>
+
+<a class="btn" href="/">
+    Open URL Analyzer
+    <i data-lucide="arrow-right"></i>
+</a>
+
 </article>
 
+
+<!-- 02 -->
+
 <article class="card">
+
+<div class="feature-icon">
+    <i data-lucide="qr-code"></i>
+</div>
+
 <span class="pill">02 · QR</span>
+
 <h3>QR Code Scanner</h3>
+
 <p>
 Decodes an uploaded QR image and analyzes the extracted value as a URL.
 </p>
-<a class="btn" href="/qr-scanner">Open QR Scanner →</a>
+
+<a class="btn" href="/qr-scanner">
+    Open QR Scanner
+    <i data-lucide="arrow-right"></i>
+</a>
+
 </article>
 
+
+<!-- 03 -->
+
 <article class="card">
+
+<div class="feature-icon">
+    <i data-lucide="message-square-warning"></i>
+</div>
+
 <span class="pill">03 · MESSAGE</span>
+
 <h3>Message Scam Detection</h3>
+
 <p>
-Checks text for common patterns involving urgency, payments, OTPs, links, and sensitive information.
+Checks text for common patterns involving urgency, payments, OTPs, links,
+and sensitive information.
 </p>
-<a class="btn" href="/message-detector">Check a Message →</a>
+
+<a class="btn" href="/message-detector">
+    Check a Message
+    <i data-lucide="arrow-right"></i>
+</a>
+
 </article>
 
+
+<!-- 04 -->
+
 <article class="card">
+
+<div class="feature-icon">
+    <i data-lucide="history"></i>
+</div>
+
 <span class="pill">04 · HISTORY</span>
+
 <h3>Scan History</h3>
+
 <p>
 Stores URL, QR, and message scan records in the SQLite history database.
 </p>
-<a class="btn" href="/history">View Scan History →</a>
+
+<a class="btn" href="/history">
+    View Scan History
+    <i data-lucide="arrow-right"></i>
+</a>
+
 </article>
 
+
+<!-- 05 -->
+
 <article class="card">
+
+<div class="feature-icon">
+    <i data-lucide="shield-check"></i>
+</div>
+
 <span class="pill">05 · LEARN</span>
+
 <h3>Cyber Safety Tips</h3>
+
 <p>
 Practical reminders for checking links and protecting sensitive information.
 </p>
-<a class="btn" href="/safety-tips">Read Safety Tips →</a>
+
+<a class="btn" href="/safety-tips">
+    Read Safety Tips
+    <i data-lucide="arrow-right"></i>
+</a>
+
 </article>
 
+
+<!-- 06 -->
+
 <article class="card">
+
+<div class="feature-icon">
+    <i data-lucide="brain"></i>
+</div>
+
 <span class="pill">06 · QUIZ</span>
+
 <h3>Awareness Quiz</h3>
+
 <p>
 Browser-based quiz with instant scoring and explanations.
 </p>
-<a class="btn" href="/quiz">Take the Quiz →</a>
+
+<a class="btn" href="/quiz">
+    Take the Quiz
+    <i data-lucide="arrow-right"></i>
+</a>
+
 </article>
+
 
 </section>
 
-<section class="card">
 
-<h2>Important limitations</h2>
+<!-- LIMITATIONS -->
+
+<section class="limitations">
+
+<div class="limit-icon">
+    <i data-lucide="triangle-alert"></i>
+</div>
+
+<div>
+
+<h2>Important Limitations</h2>
 
 <p>
 Model predictions and keyword-based checks are estimates, not definitive proof.
-Verify suspicious items through trusted official sources.
+Always verify suspicious items through trusted official sources.
 </p>
+
+</div>
 
 </section>
 
+
 </main>
 
+
+<!-- ================= FOOTER ================= -->
+
 <footer>
+
 <div class="wrap">
-AI-Based Phishing Detection &amp; Cyber Safety Analyzer ·
+
+CyberShield Analyzer ·
 Automated results are estimates, not guarantees.
+
 </div>
+
 </footer>
+
+
+<script>
+
+lucide.createIcons();
+
+</script>
+
 
 </body>
 </html>
