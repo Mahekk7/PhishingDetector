@@ -1,31 +1,27 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>QR Code Scanner | PhishingDetector</title>
-
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <title>QR Scanner | CyberShield Analyzer</title>
 
     <style>
-
-        * {
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
+        * { box-sizing: border-box; }
 
         body {
             margin: 0;
             font-family: "Segoe UI", Arial, sans-serif;
-            background: #f5f8fc;
-            color: #172033;
+            background: #f3f7fc;
+            color: #102b4e;
             line-height: 1.6;
+        }
+
+        header {
+            background: #0b203b;
+            color: white;
+            padding: 20px 0 24px;
+            box-shadow: 0 5px 20px rgba(10,32,59,.15);
         }
 
         .wrap {
@@ -33,177 +29,89 @@
             margin: auto;
         }
 
-        /* =========================
-           HEADER
-        ========================= */
-
-        header {
-            background: #0b1f3a;
-            color: white;
-            padding: 18px 0;
-            border-bottom: 1px solid #102b4d;
-            box-shadow: 0 4px 18px rgba(15, 23, 42, 0.12);
-        }
-
-        .nav {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            gap: 13px;
-        }
-
         .brand {
-            display: inline-flex;
-            align-items: center;
-            gap: 9px;
-            color: white;
-            text-decoration: none;
-            font-size: 19px;
-            font-weight: 700;
-        }
-
-        .brand svg {
-            width: 21px;
-            height: 21px;
-        }
-
-        .links {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 4px;
-            flex-wrap: wrap;
+            gap: 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 25px;
+            font-weight: 800;
+            margin-bottom: 20px;
         }
 
-        .links a {
+        .brand svg { width: 27px; height: 27px; }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px 24px;
+        }
+
+        nav a {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            color: #dbe7f3;
+            gap: 7px;
+            color: #eaf2ff;
             text-decoration: none;
-            padding: 8px 10px;
-            border-radius: 6px;
-            font-size: 13px;
-            font-weight: 500;
-            transition: 0.2s ease;
+            font-size: 14px;
+            font-weight: 600;
         }
 
-        .links a svg {
-            width: 15px;
-            height: 15px;
-        }
+        nav a:hover { color: #8eb9ff; }
 
-        .links a:hover {
-            background: #123b66;
-            color: white;
-        }
+        nav svg { width: 18px; height: 18px; }
 
-        /* =========================
-           MAIN
-        ========================= */
+        main { padding: 42px 0 65px; }
 
-        main {
-            padding: 38px 0 70px;
-        }
-
-        /* =========================
-           BLUE HERO
-        ========================= */
-
-        .page-hero {
-            background: #123b66;
-            color: white;
-            border-radius: 14px;
-            padding: 38px 40px;
-            margin-bottom: 28px;
-            box-shadow: 0 10px 28px rgba(15, 23, 42, 0.10);
-        }
-
-        .hero-inner {
+        .hero {
             display: flex;
-            align-items: flex-start;
-            gap: 20px;
+            align-items: center;
+            gap: 22px;
+            padding: 35px;
+            margin-bottom: 25px;
+            color: white;
+            background: #153f6b;
+            border-radius: 16px;
         }
 
         .hero-icon {
-            width: 64px;
-            height: 64px;
-            min-width: 64px;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-
-            border-radius: 14px;
+            flex-shrink: 0;
+            width: 70px;
+            height: 70px;
+            background: rgba(255,255,255,.1);
+            border: 1px solid rgba(255,255,255,.2);
+            border-radius: 15px;
         }
 
-        .hero-icon svg {
-            width: 34px;
-            height: 34px;
-            stroke-width: 1.8;
-        }
+        .hero-icon svg { width: 38px; height: 38px; }
 
-        .hero-content {
-            flex: 1;
-        }
-
-        .hero-label {
-            display: flex;
-            align-items: center;
-            gap: 7px;
-
-            color: #bfdbfe;
-
+        .eyebrow {
+            color: #d6e7ff;
             font-size: 12px;
-            font-weight: 700;
+            font-weight: 800;
             letter-spacing: 1.5px;
-
-            margin-bottom: 7px;
         }
 
-        .hero-label svg {
-            width: 15px;
-            height: 15px;
+        h1 {
+            margin: 7px 0;
+            font-size: clamp(29px, 4vw, 43px);
+            line-height: 1.2;
         }
 
-        .hero-content h1 {
-            margin: 0 0 10px;
+        .hero p { margin: 8px 0 0; color: #e4edfa; }
 
-            color: white;
-
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            line-height: 1.15;
-
-            font-weight: 750;
-            letter-spacing: -0.5px;
-        }
-
-        .hero-content p {
-            margin: 0;
-
-            max-width: 760px;
-
-            color: #dbeafe;
-
-            font-size: 15px;
-            line-height: 1.7;
-        }
-
-        /* =========================
-           SCANNER CARD
-        ========================= */
-
-        .scanner-card {
+        .card {
             background: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
+            border: 1px solid #dce5f0;
+            border-radius: 14px;
             padding: 32px;
-
-            box-shadow: 0 8px 28px rgba(15, 23, 42, 0.06);
+            box-shadow: 0 10px 35px rgba(20,48,80,.05);
         }
 
         .card-heading {
@@ -213,872 +121,382 @@
             margin-bottom: 25px;
         }
 
-        .card-heading-icon {
-            width: 28px;
-            height: 28px;
-            color: #123b66;
+        .card-heading svg {
+            width: 30px;
+            height: 30px;
+            color: #153f6b;
             flex-shrink: 0;
-            margin-top: 2px;
         }
 
-        .card-heading h2 {
-            color: #0b1f3a;
-            margin: 0;
-            font-size: 22px;
-            font-weight: 700;
-        }
+        h2 { margin: 0; font-size: 23px; }
 
-        .card-heading p {
-            margin: 4px 0 0;
-            color: #64748b;
+        .subtitle {
+            margin: 5px 0 0;
+            color: #71839c;
             font-size: 14px;
         }
 
-        /* =========================
-           UPLOAD AREA
-        ========================= */
-
-        .upload-area {
-            border: 2px dashed #cbd5e1;
-            border-radius: 10px;
-
-            padding: 38px 25px;
-
+        .upload-box {
+            padding: 35px 22px;
             text-align: center;
-
-            background: #f8fafc;
-
-            transition: 0.2s ease;
-        }
-
-        .upload-area:hover {
-            border-color: #2563eb;
-            background: #f5f9ff;
+            background: #f7faff;
+            border: 2px dashed #c9d8eb;
+            border-radius: 12px;
         }
 
         .upload-icon {
-            width: 52px;
-            height: 52px;
-
-            margin: 0 auto 14px;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
-            border-radius: 12px;
-
-            background: #eaf2ff;
-            color: #2563eb;
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 14px;
+            color: #2867e8;
+            background: #eaf1ff;
+            border-radius: 15px;
         }
 
-        .upload-icon svg {
-            width: 27px;
-            height: 27px;
+        .upload-icon svg { width: 32px; height: 32px; }
+
+        .upload-title {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 18px;
+            font-weight: 750;
         }
 
-        .upload-area h3 {
-            margin: 0 0 6px;
-
-            color: #0b1f3a;
-
-            font-size: 17px;
-            font-weight: 700;
-        }
-
-        .upload-area p {
-            margin: 0;
-
-            color: #64748b;
-
-            font-size: 13px;
+        .help {
+            margin-bottom: 20px;
+            color: #71839c;
+            font-size: 14px;
         }
 
         input[type="file"] {
             display: block;
-
             width: 100%;
-
-            margin-top: 18px;
-
-            padding: 11px;
-
+            padding: 12px;
+            color: #304965;
             background: white;
-
-            border: 1px solid #cbd5e1;
-
-            border-radius: 7px;
-
-            color: #475569;
-
-            font-size: 13px;
+            border: 1px solid #cfdae8;
+            border-radius: 9px;
         }
 
-        /* =========================
-           SCAN BUTTON
-        ========================= */
-
-        .scan-button {
+        button {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 9px;
-
-            background: #123b66;
-            color: white;
-
-            border: none;
-            border-radius: 7px;
-
-            padding: 13px 22px;
-
             margin-top: 20px;
-
-            font-size: 15px;
-            font-weight: 600;
-
+            padding: 13px 24px;
+            color: white;
+            background: #153f6b;
+            border: none;
+            border-radius: 9px;
+            font-size: 16px;
+            font-weight: 750;
             cursor: pointer;
-
-            transition: 0.2s ease;
         }
 
-        .scan-button svg {
-            width: 17px;
-            height: 17px;
-        }
+        button:hover { background: #20568d; }
+        button:disabled { opacity: .65; cursor: wait; }
 
-        .scan-button:hover {
-            background: #0b2d4d;
-            transform: translateY(-1px);
-        }
+        button svg { width: 19px; height: 19px; }
 
-        /* =========================
-           ERROR
-        ========================= */
-
-        .qr-error {
-            display: flex;
-            align-items: flex-start;
-            gap: 9px;
-
-            margin-top: 22px;
-
-            padding: 15px 17px;
-
-            background: #fef2f2;
-
-            border: 1px solid #fecaca;
-            border-left: 4px solid #dc2626;
-
-            border-radius: 8px;
-
-            color: #991b1b;
-
-            font-size: 14px;
-        }
-
-        .qr-error svg {
-            width: 18px;
-            height: 18px;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-
-        /* =========================
-           SUCCESS
-        ========================= */
-
-        .result-card {
-            margin-top: 28px;
-
-            background: white;
-
-            border: 1px solid #dbe3ec;
-
-            border-radius: 10px;
-
-            overflow: hidden;
-        }
-
-        .result-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-
-            padding: 19px 21px;
-
-            background: #f7f9fc;
-
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .result-header svg {
-            width: 21px;
-            height: 21px;
-            color: #123b66;
-        }
-
-        .result-header h2 {
-            margin: 0;
-
-            color: #0b1f3a;
-
-            font-size: 19px;
-        }
-
-        .result-body {
-            padding: 23px;
-        }
-
-        /* =========================
-           SCANNED URL
-        ========================= */
-
-        .url-box {
-            padding: 15px;
-
-            background: #f8fafc;
-
-            border: 1px solid #e2e8f0;
-
-            border-radius: 8px;
-
+        .alert, .result {
+            margin-top: 24px;
+            padding: 20px;
+            border-radius: 11px;
             overflow-wrap: anywhere;
         }
 
-        .url-label {
-            color: #64748b;
-
-            font-size: 12px;
-
-            margin-bottom: 5px;
+        .error {
+            color: #8c2635;
+            background: #fff1f2;
+            border: 1px solid #fecdd3;
+            border-left: 5px solid #dc3545;
         }
 
-        .url-value {
-            color: #172033;
-
-            font-size: 14px;
-
-            font-weight: 600;
+        .success {
+            color: #176342;
+            background: #effcf5;
+            border: 1px solid #b7ebce;
+            border-left: 5px solid #28a36a;
         }
 
-        /* =========================
-           RISK
-        ========================= */
-
-        .risk-section {
-            margin-top: 24px;
+        .result {
+            color: #263f5c;
+            background: #f7faff;
+            border: 1px solid #d7e4f4;
+            border-left: 5px solid #2867e8;
         }
 
-        .risk-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .result h2 { margin-bottom: 15px; color: #153f6b; }
+        .result p { margin: 10px 0; }
+        .result a { color: #215ed0; overflow-wrap: anywhere; }
 
-            margin-bottom: 8px;
-        }
-
-        .risk-title {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-
-            color: #0b1f3a;
-
-            font-size: 15px;
-            font-weight: 700;
-        }
-
-        .risk-title svg {
-            width: 18px;
-            height: 18px;
-            color: #2563eb;
-        }
-
-        .risk-percentage {
-            color: #1d4ed8;
-
-            font-size: 17px;
-
-            font-weight: 700;
-        }
-
-        .risk-bar {
-            width: 100%;
-            height: 9px;
-
-            background: #e2e8f0;
-
+        .pill {
+            display: inline-block;
+            padding: 4px 11px;
+            color: #194f9f;
+            background: #e5efff;
+            border: 1px solid #c7dcff;
             border-radius: 20px;
-
-            overflow: hidden;
+            font-weight: 800;
         }
 
-        .risk-fill {
-            height: 100%;
-
-            width: {{ qr_risk_percentage or 0 }}%;
-
-            background: #2563eb;
-
-            border-radius: 20px;
+        details {
+            margin-top: 18px;
+            padding: 14px;
+            background: white;
+            border: 1px solid #d7e4f4;
+            border-radius: 9px;
         }
 
-        /* =========================
-           RESULT TEXT
-        ========================= */
+        summary { color: #153f6b; font-weight: 750; cursor: pointer; }
+        details li { margin: 7px 0; overflow-wrap: anywhere; }
 
-        .result-text {
-            margin-top: 22px;
-
-            padding: 16px;
-
-            background: #f8fafc;
-
-            border: 1px solid #e2e8f0;
-
-            border-radius: 8px;
-
-            color: #475569;
-
+        .warning {
+            margin-top: 20px;
+            padding: 13px;
+            color: #785a16;
+            background: #fff8e8;
+            border: 1px solid #f2dfad;
+            border-radius: 9px;
             font-size: 14px;
         }
-
-        .result-text strong {
-            color: #334155;
-        }
-
-        /* =========================
-           FEATURES
-        ========================= */
-
-        .features-section {
-            margin-top: 24px;
-        }
-
-        .features-title {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-
-            color: #0b1f3a;
-
-            font-size: 15px;
-            font-weight: 700;
-
-            margin-bottom: 12px;
-        }
-
-        .features-title svg {
-            width: 18px;
-            height: 18px;
-            color: #2563eb;
-        }
-
-        .features-list {
-            list-style: none;
-
-            padding: 0;
-            margin: 0;
-        }
-
-        .features-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 9px;
-
-            padding: 9px 11px;
-
-            margin-bottom: 8px;
-
-            background: #f8fafc;
-
-            border: 1px solid #e2e8f0;
-
-            border-radius: 7px;
-
-            color: #475569;
-
-            font-size: 14px;
-        }
-
-        .features-list li::before {
-            content: "•";
-
-            color: #2563eb;
-
-            font-size: 18px;
-            line-height: 18px;
-
-            font-weight: 700;
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
 
         footer {
-            background: #0b1f3a;
-
-            color: #cbd5e1;
-
-            padding: 25px 0;
-
+            padding: 25px 15px;
+            color: #d9e6f8;
+            background: #0b203b;
             text-align: center;
+            font-size: 14px;
         }
 
-        footer .wrap {
-            font-size: 13px;
+        @media(max-width: 650px) {
+            .brand { font-size: 21px; }
+            nav { gap: 12px 16px; }
+            nav a { font-size: 13px; }
+            main { padding: 25px 0 40px; }
+            .hero { padding: 23px; align-items: flex-start; flex-direction: column; }
+            .card { padding: 22px 16px; }
+            .upload-box { padding: 25px 14px; }
+            button { width: 100%; }
         }
-
-        footer span {
-            display: inline-block;
-
-            margin-top: 5px;
-
-            color: #94a3b8;
-        }
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 700px) {
-
-            header {
-                padding: 16px 0;
-            }
-
-            .links a {
-                font-size: 12px;
-                padding: 7px 8px;
-            }
-
-            main {
-                padding: 25px 0 50px;
-            }
-
-            .page-hero {
-                padding: 28px 23px;
-                border-radius: 12px;
-            }
-
-            .hero-inner {
-                gap: 14px;
-            }
-
-            .hero-icon {
-                width: 52px;
-                height: 52px;
-                min-width: 52px;
-            }
-
-            .hero-icon svg {
-                width: 28px;
-                height: 28px;
-            }
-
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-
-            .hero-content p {
-                font-size: 14px;
-            }
-
-            .scanner-card {
-                padding: 21px;
-            }
-
-            .scan-button {
-                width: 100%;
-            }
-
-            .result-body {
-                padding: 19px;
-            }
-
-        }
-
     </style>
-
 </head>
 
-
 <body>
-
-
-<!-- =========================
-     HEADER
-========================= -->
-
 <header>
-
-    <div class="wrap nav">
-
+    <div class="wrap">
         <a class="brand" href="/">
-
-            <i data-lucide="shield-check"></i>
-
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z"/>
+                <path d="m9 12 2 2 4-4"/>
+            </svg>
             CyberShield Analyzer
-
         </a>
 
-
-        <nav class="links">
-
+        <nav aria-label="Main navigation">
             <a href="/">
-                <i data-lucide="link"></i>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-2 2"/>
+                    <path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l2-2"/>
+                </svg>
                 URL Analyzer
             </a>
 
-            <a href="/qr-scanner">
-                <i data-lucide="qr-code"></i>
+            <a href="/qr-scanner" aria-current="page">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="7" rx="1"/>
+                    <rect x="14" y="3" width="7" height="7" rx="1"/>
+                    <rect x="3" y="14" width="7" height="7" rx="1"/>
+                    <path d="M14 14h3v3h-3zM20 14v2M14 20h2M20 19v2M18 21h3"/>
+                </svg>
                 QR Scanner
             </a>
 
             <a href="/message-detector">
-                <i data-lucide="message-square"></i>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a4 4 0 0 1-4 4H7l-4 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/>
+                </svg>
                 Message Detector
             </a>
 
             <a href="/safety-tips">
-                <i data-lucide="shield"></i>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z"/>
+                </svg>
                 Safety Tips
             </a>
 
             <a href="/quiz">
-                <i data-lucide="clipboard-check"></i>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="4" y="3" width="16" height="18" rx="2"/>
+                    <path d="M8 8h8M8 12h5M8 16h3"/>
+                </svg>
                 Quiz
             </a>
 
-            <a href="/features">
-                <i data-lucide="layout-grid"></i>
-                Features
-            </a>
-
-            <a href="/history">
-                <i data-lucide="history"></i>
-                History
-            </a>
-
+            <a href="/history">Scan History</a>
         </nav>
-
     </div>
-
 </header>
 
-
-
-<!-- =========================
-     MAIN
-========================= -->
-
-<main class="wrap">
-
-
-    <!-- =========================
-         BLUE HERO
-    ========================= -->
-
-    <section class="page-hero">
-
-        <div class="hero-inner">
-
-            <div class="hero-icon">
-
-                <i data-lucide="qr-code"></i>
-
-            </div>
-
-
-            <div class="hero-content">
-
-                <div class="hero-label">
-
-                    <i data-lucide="scan-line"></i>
-
-                    QR SECURITY
-
-                </div>
-
-
-                <h1>
-                    QR Code Scanner
-                </h1>
-
-
-                <p>
-                    Scan a QR code to extract its URL and check it for
-                    potentially suspicious or harmful activity.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================
-         SCANNER CARD
-    ========================= -->
-
-    <section class="scanner-card">
-
-        <div class="card-heading">
-
-            <i
-                data-lucide="scan-search"
-                class="card-heading-icon"
-            ></i>
-
-            <div>
-
-                <h2>
-                    Scan a QR Code
-                </h2>
-
-                <p>
-                    Upload an image containing a QR code to analyze its destination.
-                </p>
-
-            </div>
-
-        </div>
-
-
-
-        <form
-            action="/scan-qr"
-            method="POST"
-            enctype="multipart/form-data"
-        >
-
-            <div class="upload-area">
-
-                <div class="upload-icon">
-
-                    <i data-lucide="file-image"></i>
-
-                </div>
-
-
-                <h3>
-                    Upload QR Code Image
-                </h3>
-
-
-                <p>
-                    Select a clear image containing a QR code.
-                </p>
-
-
-                <input
-                    type="file"
-                    name="qr_image"
-                    accept="image/*"
-                    required
-                >
-
-
-                <button
-                    type="submit"
-                    class="scan-button"
-                >
-
-                    <i data-lucide="scan-line"></i>
-
-                    Scan QR Code
-
-                </button>
-
-            </div>
-
-        </form>
-
-
-
-        <!-- =========================
-             ERROR
-        ========================= -->
-
-        {% if qr_error %}
-
-        <div class="qr-error">
-
-            <i data-lucide="circle-alert"></i>
-
-            <span>
-                {{ qr_error }}
-            </span>
-
-        </div>
-
-        {% endif %}
-
-
-
-        <!-- =========================
-             SUCCESS / RESULT
-        ========================= -->
-
-        {% if qr_success %}
-
-        <div class="result-card">
-
-            <div class="result-header">
-
-                <i data-lucide="file-search"></i>
-
-                <h2>
-                    QR Analysis Result
-                </h2>
-
-            </div>
-
-
-            <div class="result-body">
-
-
-                <!-- SCANNED URL -->
-
-                <div class="url-box">
-
-                    <div class="url-label">
-                        Extracted URL
-                    </div>
-
-                    <div class="url-value">
-                        {{ qr_url }}
-                    </div>
-
-                </div>
-
-
-
-                <!-- RISK -->
-
-                <div class="risk-section">
-
-                    <div class="risk-top">
-
-                        <div class="risk-title">
-
-                            <i data-lucide="gauge"></i>
-
-                            Risk Assessment
-
-                        </div>
-
-
-                        <div class="risk-percentage">
-
-                            {{ qr_risk_percentage }}%
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="risk-bar">
-
-                        <div class="risk-fill"></div>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- RESULT -->
-
-                <div class="result-text">
-
-                    <strong>
-                        Assessment:
-                    </strong>
-
-                    {{ qr_result }}
-
-                </div>
-
-
-
-                <!-- FEATURES -->
-
-                {% if qr_features %}
-
-                <div class="features-section">
-
-                    <div class="features-title">
-
-                        <i data-lucide="list-checks"></i>
-
-                        Security Indicators
-
-                    </div>
-
-
-                    <ul class="features-list">
-
-                        {% for feature in qr_features %}
-
-                        <li>
-                            {{ feature }}
-                        </li>
-
-                        {% endfor %}
-
-                    </ul>
-
-                </div>
-
-                {% endif %}
-
-            </div>
-
-        </div>
-
-        {% endif %}
-
-    </section>
-
-</main>
-
-
-
-<!-- =========================
-     FOOTER
-========================= -->
-
-<footer>
-
+<main>
     <div class="wrap">
 
-        AI-Based Phishing Detection &amp;
-        Cyber Safety Analyzer
+        <section class="hero">
+            <div class="hero-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="7" height="7" rx="1"/>
+                    <rect x="14" y="3" width="7" height="7" rx="1"/>
+                    <rect x="3" y="14" width="7" height="7" rx="1"/>
+                    <path d="M14 14h3v3h-3zM20 14v2M14 20h2M20 19v2"/>
+                </svg>
+            </div>
 
-        <br>
+            <div>
+                <div class="eyebrow">QR CODE SECURITY CHECK</div>
+                <h1>QR Code Scanner</h1>
+                <p>Scan a QR code image and check whether its extracted link may be suspicious.</p>
+            </div>
+        </section>
 
-        <span>
-            Automated results are estimates, not guarantees.
-        </span>
+        <section class="card">
+            <div class="card-heading">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <path d="m17 8-5-5-5 5M12 3v12"/>
+                </svg>
 
+                <div>
+                    <h2>Upload QR Code</h2>
+                    <p class="subtitle">Choose a clear QR code image to analyze its link.</p>
+                </div>
+            </div>
+
+            <form id="qrForm" action="/scan-qr" method="POST" enctype="multipart/form-data">
+                <div class="upload-box">
+                    <div class="upload-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                             stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="7" height="7" rx="1"/>
+                            <rect x="14" y="3" width="7" height="7" rx="1"/>
+                            <rect x="3" y="14" width="7" height="7" rx="1"/>
+                            <path d="M14 14h3v3h-3zM20 14v2M14 20h2"/>
+                        </svg>
+                    </div>
+
+                    <label class="upload-title" for="qr_image">Select QR code image</label>
+                    <div class="help">Supported image types: PNG, JPG, JPEG, WEBP</div>
+
+                    <input
+                        class="field"
+                        type="file"
+                        id="qr_image"
+                        name="qr_image"
+                        accept="image/png,image/jpeg,image/webp"
+                        required
+                    >
+
+                    <button type="submit" id="scanButton">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="7"/>
+                            <path d="m20 20-4-4"/>
+                        </svg>
+                        Scan QR Code
+                    </button>
+                </div>
+            </form>
+
+            <div class="warning">
+                <strong>Safety tip:</strong> Do not open a QR code link until you have checked the destination. A scan result is an estimate, not a guarantee that a link is safe.
+            </div>
+
+            {% if qr_error %}
+                <div class="alert error" role="alert">
+                    <strong>Scan failed:</strong> {{ qr_error }}
+                </div>
+            {% endif %}
+
+            {% if qr_success %}
+                <div class="alert success">
+                    <strong>QR code detected successfully.</strong>
+                </div>
+
+                <div class="result">
+                    <h2>Analysis Result</h2>
+
+                    <p><strong>Extracted link/text:</strong><br>
+                        {% if qr_url and qr_url.startswith(('http://', 'https://')) %}
+                            <a href="{{ qr_url }}" target="_blank" rel="noopener noreferrer">{{ qr_url }}</a>
+                        {% else %}
+                            {{ qr_url }}
+                        {% endif %}
+                    </p>
+
+                    <p><strong>Detection:</strong>
+                        <span class="pill">{{ qr_result }}</span>
+                    </p>
+
+                    <p><strong>Estimated risk:</strong>
+                        <span class="pill">{{ qr_risk_percentage }}%</span>
+                    </p>
+
+                    {% if qr_features %}
+                        <details>
+                            <summary>View extracted URL features</summary>
+                            <ul>
+                                {% for name, value in qr_features.items() %}
+                                    <li><strong>{{ name }}:</strong> {{ value }}</li>
+                                {% endfor %}
+                            </ul>
+                        </details>
+                    {% endif %}
+                </div>
+            {% endif %}
+
+        </section>
     </div>
+</main>
 
+<footer>
+    <p>CyberShield Analyzer — Cyber Safety & Phishing Awareness</p>
+    <span>Always verify suspicious links before opening them.</span>
 </footer>
 
-
-
 <script>
+    const qrForm = document.getElementById("qrForm");
+    const qrInput = document.getElementById("qr_image");
+    const scanButton = document.getElementById("scanButton");
 
-    lucide.createIcons();
+    qrForm.addEventListener("submit", function (event) {
+        if (!qrInput.files || qrInput.files.length === 0) {
+            event.preventDefault();
+            alert("Please select a QR code image first.");
+            return;
+        }
 
+        const file = qrInput.files[0];
+        const allowedTypes = ["image/png", "image/jpeg", "image/webp"];
+
+        if (!allowedTypes.includes(file.type)) {
+            event.preventDefault();
+            alert("Please upload a PNG, JPG, JPEG, or WEBP image.");
+            qrInput.value = "";
+            return;
+        }
+
+        scanButton.disabled = true;
+        scanButton.textContent = "Scanning...";
+    });
 </script>
 
-
 </body>
-
 </html>
+```
